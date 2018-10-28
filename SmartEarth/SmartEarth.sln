@@ -1,0 +1,80 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27703.2018
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SmartEarth.Common.Infrastructure", "SmartEarth.Common.Infrastructure\SmartEarth.Common.Infrastructure.csproj", "{8F2AF7EB-36CF-483E-A031-161478A72A2B}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Common", "Common", "{3738DF0F-898D-4F6F-AFCD-CF51BACF2F58}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SmartEarth.Desktop", "SmartEarth.Desktop\SmartEarth.Desktop.csproj", "{1AC71E41-0195-4751-B7BC-25B1A23982D1}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Demos", "Demos", "{64BF1DF4-6AEA-41CB-89F9-B310EDB7247F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SmartEarth.Demos.Automation", "SmartEarth.Demos.Automation\SmartEarth.Demos.Automation.csproj", "{4AC09076-D74F-4AC8-9268-DB23627218F2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SmartEarth.Demos.ProcessMonitor", "SmartEarth.Demos.ProcessMonitor\SmartEarth.Demos.ProcessMonitor.csproj", "{725B8600-C5BF-4A9F-AE08-875DE4A66ACC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SmartEarth.Demos.Scheduler", "SmartEarth.Demos.Scheduler\SmartEarth.Demos.Scheduler.csproj", "{3B8D3403-9B98-4FDF-86ED-F4646976501F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SmartEarth.Demos.DatabaseManager", "SmartEarth.Demos.DatabaseManager\SmartEarth.Demos.DatabaseManager.csproj", "{E5D20CB5-1AE6-40B0-A831-71219CFF5261}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SmartEarth.Demos.WhiteAutomation", "SmartEarth.Demos.WhiteAutomation\SmartEarth.Demos.WhiteAutomation.csproj", "{23A31023-1401-4007-8E6F-0F7BA1DD4F04}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SmartEarth.Demos.Sorting", "SmartEarth.Demos.Sorting\SmartEarth.Demos.Sorting.csproj", "{1188A024-7979-4544-816A-D7687C96EEC9}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{8F2AF7EB-36CF-483E-A031-161478A72A2B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8F2AF7EB-36CF-483E-A031-161478A72A2B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8F2AF7EB-36CF-483E-A031-161478A72A2B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8F2AF7EB-36CF-483E-A031-161478A72A2B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1AC71E41-0195-4751-B7BC-25B1A23982D1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1AC71E41-0195-4751-B7BC-25B1A23982D1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1AC71E41-0195-4751-B7BC-25B1A23982D1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1AC71E41-0195-4751-B7BC-25B1A23982D1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4AC09076-D74F-4AC8-9268-DB23627218F2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4AC09076-D74F-4AC8-9268-DB23627218F2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4AC09076-D74F-4AC8-9268-DB23627218F2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4AC09076-D74F-4AC8-9268-DB23627218F2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{725B8600-C5BF-4A9F-AE08-875DE4A66ACC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{725B8600-C5BF-4A9F-AE08-875DE4A66ACC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{725B8600-C5BF-4A9F-AE08-875DE4A66ACC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{725B8600-C5BF-4A9F-AE08-875DE4A66ACC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3B8D3403-9B98-4FDF-86ED-F4646976501F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3B8D3403-9B98-4FDF-86ED-F4646976501F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3B8D3403-9B98-4FDF-86ED-F4646976501F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3B8D3403-9B98-4FDF-86ED-F4646976501F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E5D20CB5-1AE6-40B0-A831-71219CFF5261}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E5D20CB5-1AE6-40B0-A831-71219CFF5261}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E5D20CB5-1AE6-40B0-A831-71219CFF5261}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E5D20CB5-1AE6-40B0-A831-71219CFF5261}.Release|Any CPU.Build.0 = Release|Any CPU
+		{23A31023-1401-4007-8E6F-0F7BA1DD4F04}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{23A31023-1401-4007-8E6F-0F7BA1DD4F04}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{23A31023-1401-4007-8E6F-0F7BA1DD4F04}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{23A31023-1401-4007-8E6F-0F7BA1DD4F04}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1188A024-7979-4544-816A-D7687C96EEC9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1188A024-7979-4544-816A-D7687C96EEC9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1188A024-7979-4544-816A-D7687C96EEC9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1188A024-7979-4544-816A-D7687C96EEC9}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{8F2AF7EB-36CF-483E-A031-161478A72A2B} = {3738DF0F-898D-4F6F-AFCD-CF51BACF2F58}
+		{4AC09076-D74F-4AC8-9268-DB23627218F2} = {64BF1DF4-6AEA-41CB-89F9-B310EDB7247F}
+		{725B8600-C5BF-4A9F-AE08-875DE4A66ACC} = {64BF1DF4-6AEA-41CB-89F9-B310EDB7247F}
+		{3B8D3403-9B98-4FDF-86ED-F4646976501F} = {64BF1DF4-6AEA-41CB-89F9-B310EDB7247F}
+		{E5D20CB5-1AE6-40B0-A831-71219CFF5261} = {64BF1DF4-6AEA-41CB-89F9-B310EDB7247F}
+		{23A31023-1401-4007-8E6F-0F7BA1DD4F04} = {64BF1DF4-6AEA-41CB-89F9-B310EDB7247F}
+		{1188A024-7979-4544-816A-D7687C96EEC9} = {64BF1DF4-6AEA-41CB-89F9-B310EDB7247F}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {FC3C0B0C-B35D-4D88-9405-EA021FFCD414}
+	EndGlobalSection
+EndGlobal

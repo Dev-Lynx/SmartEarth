@@ -1,0 +1,38 @@
+﻿<UserControl x:Class="SmartEarth.Desktop.Views.ColorPickerView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:SmartEarth.Desktop.Views"
+             xmlns:prism="http://prismlibrary.com/"
+             xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+             mc:Ignorable="d" prism:ViewModelLocator.AutoWireViewModel="True"
+             d:DesignHeight="{Binding ElementName=PickerImage, Path=ActualHeight}" d:DesignWidth="800" Background="{DynamicResource BackgroundBrush}">
+    <Grid Background="{Binding SelectedBrush, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="Auto"/>
+        </Grid.ColumnDefinitions>
+        <Image Name="PickerImage" HorizontalAlignment="Left" Height="300" Source="{DynamicResource ColorWheel}" Style="{DynamicResource ClearImage}" />
+        <Canvas HorizontalAlignment="Left" Background="{DynamicResource Transparent}" Width="{Binding ElementName=PickerImage, Path=ActualWidth}"  Height="{Binding ElementName=PickerImage, Path=ActualHeight}">
+            <i:Interaction.Triggers>
+                <i:EventTrigger EventName="MouseMove">
+                    <i:InvokeCommandAction Command="{Binding MouseMoveCommand}" CommandParameter="{Binding ElementName=PickerImage}"/>
+                </i:EventTrigger>
+                <i:EventTrigger EventName="MouseUp">
+                    <i:InvokeCommandAction Command="{Binding MouseUpCommand}" CommandParameter="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Canvas}}}"/>
+                </i:EventTrigger>
+                <i:EventTrigger EventName="MouseDown">
+                    <i:InvokeCommandAction Command="{Binding MouseDownCommand}" CommandParameter="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Canvas}}}"/>
+                </i:EventTrigger>
+            </i:Interaction.Triggers>
+            <Ellipse Width="10" Height="10" Stroke="Black" Fill="White" Canvas.Left="{Binding CurrentPosition.X, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Canvas.Top="{Binding CurrentPosition.Y, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+        </Canvas>
+
+        <StackPanel Grid.Column="2">
+            <Button Content="Cancel"/>
+            <Button VerticalAlignment="Bottom" Content="Done"/>
+        </StackPanel>
+    </Grid>
+</UserControl>

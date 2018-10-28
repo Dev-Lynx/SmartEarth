@@ -1,0 +1,98 @@
+﻿<UserControl x:Class="SmartEarth.Desktop.Views.NewAutomationView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:prism="http://prismlibrary.com/"
+             xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+             xmlns:local="clr-namespace:SmartEarth.Desktop.Views"
+             xmlns:material="http://materialdesigninxaml.net/winfx/xaml/themes"
+             mc:Ignorable="d" Background="{DynamicResource BackgroundBrush}"
+             d:DesignHeight="600" d:DesignWidth="500" prism:ViewModelLocator.AutoWireViewModel="True">
+    
+    <!--
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        
+        <TextBlock Style="{DynamicResource HeadingTextBlock}" Text="{DynamicResource MODAL_NEW_AUTOMATION_HEADING}" Grid.ColumnSpan="2"/>
+        
+        <StackPanel Margin="10" Grid.Row="1">
+            <Label Style="{DynamicResource BoldLabel}" Content="{DynamicResource NAME}"/>
+            <Label Style="{DynamicResource BoldLabel}" DockPanel.Dock="Left" Content="{DynamicResource MODAL_NEW_AUTOMATION_LATITUDE}"/>
+            <Label Style="{DynamicResource BoldLabel}" DockPanel.Dock="Left" Content="{DynamicResource MODAL_NEW_AUTOMATION_LONGITUDE}"/>
+            <Label Style="{DynamicResource BoldLabel}" DockPanel.Dock="Left" Content="{DynamicResource MODAL_NEW_AUTOMATION_RANGE}"/>
+            <Label Style="{DynamicResource BoldLabel}" DockPanel.Dock="Left" Content="{DynamicResource MODAL_NEW_AUTOMATION_LOCATION_HEADING}"/>
+            <Label Style="{DynamicResource BoldLabel}" DockPanel.Dock="Left" Content="{DynamicResource MODAL_NEW_AUTOMATION_TILT}"/>
+        </StackPanel>
+
+        <StackPanel Margin="10" Grid.Row="2" Grid.Column="1">
+            <TextBox Margin="5" Width="200" HorizontalAlignment="Left" Text="{Binding AutomationLocation.Latitude, Mode=TwoWay, UpdateSourceTrigger=LostFocus}"/>
+            <TextBox Margin="5" Width="200" HorizontalAlignment="Left" Text="{Binding AutomationLocation.Longitude, Mode=TwoWay, UpdateSourceTrigger=LostFocus}"/>
+            <TextBox Margin="5" Width="200" HorizontalAlignment="Left" Text="{Binding AutomationLocation.Range, Mode=TwoWay, UpdateSourceTrigger=LostFocus}"/>
+            <TextBox Margin="5" Width="200" HorizontalAlignment="Left" Text="{Binding AutomationLocation.Heading, Mode=TwoWay, UpdateSourceTrigger=LostFocus, Converter={StaticResource AngleToStringConverter}}"/>
+            <TextBox Margin="5" Width="200" HorizontalAlignment="Left" Text="{Binding AutomationLocation.Tilt, Mode=TwoWay, UpdateSourceTrigger=LostFocus, Converter={StaticResource AngleToStringConverter}}"/>
+            <Button Content="Start Automation" HorizontalAlignment="Right" Margin="20 20 50 20" Padding="7" Command="{Binding StartAutomationCommand}"/>
+        </StackPanel>
+    </Grid>
+    -->
+
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/SmartEarth.Common.Infrastructure;component/Resources/Material.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>   
+    </UserControl.Resources>
+    <DockPanel Margin="40 40 20 20">
+        <TextBlock DockPanel.Dock="Top" Style="{DynamicResource HeadingTextBlock}" FontSize="30" Text="{DynamicResource MODAL_NEW_AUTOMATION_HEADING}" TextAlignment="Center" Margin="0 0 0 50" />
+
+        <Grid Margin="40" DockPanel.Dock="Bottom">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+
+            <Button Command="{Binding CancelCommand}" Content="{DynamicResource CANCEL}" Margin="10" Grid.Column="1"/>
+            <Button Command="{Binding StartAutomationCommand}" IsEnabled="{Binding Task.IsValid}" Content="{DynamicResource START}" Margin="10 10 0 10" Grid.Column="2"/>
+        </Grid>
+
+        <ScrollViewer HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Auto">
+            <StackPanel>
+                <TextBox Text="{Binding Task.Name}" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Margin="0 0 100 0" material:HintAssist.Hint="{DynamicResource NAME}" Foreground="{DynamicResource AuxBrush}" BorderBrush="{DynamicResource AuxBrush}"/>
+                <TextBox Text="{Binding Task.Description}" TextWrapping="Wrap" AcceptsReturn="True" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Margin="0 10 100 0" material:HintAssist.Hint="{DynamicResource DESCRIPTION}" Foreground="{DynamicResource AuxBrush}" BorderBrush="{DynamicResource AuxBrush}"/>
+
+                <StackPanel Orientation="Horizontal" Margin="0 20 0 0">
+                    <Label Padding="0 5" Margin="0 0 5 0" Content="{DynamicResource COLOR}" Foreground="{DynamicResource AuxBrush}" Opacity=".7"/>
+                    <ComboBox material:ComboBoxAssist.ShowSelectedItem="True" Name="ColorCombo" Margin="0 -3 0 0" VerticalAlignment="Center" VerticalContentAlignment="Center" SelectedIndex="0" SelectedItem="{Binding Task.Color, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" ItemsSource="{Binding Configuration.Colors}">
+                        <ComboBox.ItemTemplate>
+                            <DataTemplate>
+                                <Border Background="{Binding Brush}" ToolTip="{Binding Name}" BorderBrush="{DynamicResource PolarMainBrush}" BorderThickness="1" CornerRadius="5" Width="20" Height="20" />
+                            </DataTemplate>
+                        </ComboBox.ItemTemplate>
+                        <ComboBox.ItemsPanel>
+                            <ItemsPanelTemplate>
+                                <WrapPanel MaxWidth="200"/>
+                            </ItemsPanelTemplate>
+                        </ComboBox.ItemsPanel>
+                    </ComboBox>
+                </StackPanel>
+                <TextBox Text="{Binding Location.Latitude, Mode=TwoWay, UpdateSourceTrigger=LostFocus}" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Margin="0 10 100 0" material:HintAssist.Hint="{DynamicResource LATITUDE}" Foreground="{DynamicResource AuxBrush}" BorderBrush="{DynamicResource AuxBrush}"/>
+                <TextBox Text="{Binding Location.Longitude, Mode=TwoWay, UpdateSourceTrigger=LostFocus}" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Margin="0 10 100 0" material:HintAssist.Hint="{DynamicResource LONGITUDE}" Foreground="{DynamicResource AuxBrush}" BorderBrush="{DynamicResource AuxBrush}"/>
+                <TextBox Text="{Binding Location.Range, Mode=TwoWay, UpdateSourceTrigger=LostFocus}" Margin="0 10 100 0" material:HintAssist.Hint="{DynamicResource RANGE}" Foreground="{DynamicResource AuxBrush}" BorderBrush="{DynamicResource AuxBrush}" Style="{StaticResource MaterialDesignFloatingHintTextBox}"  />
+                <TextBox Text="{Binding Location.Heading, Mode=TwoWay, UpdateSourceTrigger=LostFocus, Converter={StaticResource AngleToStringConverter}}" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Margin="0 10 100 0" material:HintAssist.Hint="{DynamicResource HEADING}" Foreground="{DynamicResource AuxBrush}" BorderBrush="{DynamicResource AuxBrush}"/>
+                <TextBox Text="{Binding Location.Tilt, Mode=TwoWay, UpdateSourceTrigger=LostFocus, Converter={StaticResource AngleToStringConverter}}" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Margin="0 10 100 0" material:HintAssist.Hint="{DynamicResource TILT}" Foreground="{DynamicResource AuxBrush}" BorderBrush="{DynamicResource AuxBrush}"/>
+            </StackPanel>
+        </ScrollViewer>
+
+
+    </DockPanel>
+</UserControl>

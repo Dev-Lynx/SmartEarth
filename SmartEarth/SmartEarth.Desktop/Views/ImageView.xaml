@@ -1,0 +1,83 @@
+﻿<UserControl x:Class="SmartEarth.Desktop.Views.ImageView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:SmartEarth.Desktop.Views"
+             xmlns:prism="http://prismlibrary.com/"
+             xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+             xmlns:coreAttachments="clr-namespace:SmartEarth.Common.Infrastructure.Resources.Attachments;assembly=SmartEarth.Common.Infrastructure"
+             xmlns:coreControls="clr-namespace:SmartEarth.Common.Infrastructure.Resources.Controls;assembly=SmartEarth.Common.Infrastructure"
+             mc:Ignorable="d" d:DesignHeight="450" d:DesignWidth="800"
+             prism:ViewModelLocator.AutoWireViewModel="True">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="Auto"/>
+        </Grid.ColumnDefinitions>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <coreControls:SmartEarthScrollViewer DynamicScrollableWidth="{Binding ViewPortWidth, Mode=OneWayToSource}" DynamicScrollableHeight="{Binding ViewPortHeight, Mode=OneWayToSource}" DynamicHorizontalOffset="{Binding ScrollOffsetX, Mode=TwoWay}" DynamicVerticalOffset="{Binding ScrollOffsetY, Mode=TwoWay}" Grid.ColumnSpan="3" Grid.RowSpan="2" HorizontalScrollBarVisibility="Hidden" VerticalScrollBarVisibility="Hidden">
+            <i:Interaction.Triggers>
+                <i:EventTrigger EventName="ScrollChanged">
+                    <prism:InvokeCommandAction Command="{Binding ScrollCommand}"/>
+                </i:EventTrigger>
+            </i:Interaction.Triggers>
+            <Viewbox>
+                <i:Interaction.Triggers>
+                    <i:EventTrigger EventName="MouseWheel">
+                        <prism:InvokeCommandAction Command="{Binding MouseWheelCommand}"/>
+                    </i:EventTrigger>
+                    
+                </i:Interaction.Triggers>
+                <Viewbox.LayoutTransform>
+                    <ScaleTransform CenterX="100" CenterY="100" ScaleX="{Binding ZoomScale, Converter={StaticResource PercentageToRatioConverter}}" ScaleY="{Binding ZoomScale, Converter={StaticResource PercentageToRatioConverter}}"/>
+                </Viewbox.LayoutTransform>
+                <Image Stretch="Uniform"  Source="{Binding View.Image.Source}" Cursor="{Binding CurrentCursor}">
+                    <i:Interaction.Triggers>
+                        <i:EventTrigger EventName="PreviewMouseMove">
+                            <prism:InvokeCommandAction Command="{Binding MouseMoveCommand}" />
+                        </i:EventTrigger>
+                        <i:EventTrigger EventName="PreviewMouseUp">
+                            <prism:InvokeCommandAction Command="{Binding MouseUpCommand}" CommandParameter="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type Image}}}"/>
+                        </i:EventTrigger>
+                        <i:EventTrigger EventName="PreviewMouseDown">
+                            <prism:InvokeCommandAction Command="{Binding MouseDownCommand}" CommandParameter="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type Image}}}"/>
+                        </i:EventTrigger>
+                    </i:Interaction.Triggers>
+                </Image>
+            </Viewbox>
+        </coreControls:SmartEarthScrollViewer>
+
+        <Border Opacity=".8" IsHitTestVisible="False" Visibility="{Binding ZoomActive, Converter={StaticResource BoolToVisibilityConverter}}"  Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Center" CornerRadius="35" Height="70" Width="70" Background="{DynamicResource AuxBrush}">
+            <TextBlock FontSize="{DynamicResource NormalFontSize}" TextAlignment="Center" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="{DynamicResource MainBrush}">
+                <Run Text="{Binding ZoomScale, Mode=OneWay}"/> %
+            </TextBlock>
+        </Border>
+
+
+        <Button Style="{DynamicResource ImageButton}" Visibility="Hidden">
+            <Image Source="{DynamicResource BackIcon}" Height="50" Style="{DynamicResource ClearImage}"/>
+        </Button>
+        
+        <Button Style="{DynamicResource ImageButton}" Grid.Column="2" Visibility="Hidden">
+            <Image Source="{DynamicResource ForwardIcon}" Height="50" Style="{DynamicResource ClearImage}"/>
+        </Button>
+
+
+        <StackPanel Grid.Row="1" Grid.ColumnSpan="3">
+            <ItemsControl Height="40">
+                <ItemsControl.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <StackPanel Orientation="Horizontal"/>
+                    </ItemsPanelTemplate>
+                </ItemsControl.ItemsPanel>
+            </ItemsControl>
+        </StackPanel>
+    </Grid>
+</UserControl>

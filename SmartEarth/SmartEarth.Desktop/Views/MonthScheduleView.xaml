@@ -1,0 +1,480 @@
+﻿<UserControl x:Class="SmartEarth.Desktop.Views.MonthScheduleView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:SmartEarth.Desktop.Views"
+             xmlns:core="clr-namespace:SmartEarth.Common.Infrastructure;assembly=SmartEarth.Common.Infrastructure"
+             xmlns:coreControls="clr-namespace:SmartEarth.Common.Infrastructure.Resources.Controls;assembly=SmartEarth.Common.Infrastructure"
+             xmlns:coreConverters="clr-namespace:SmartEarth.Common.Infrastructure.Resources.Converters;assembly=SmartEarth.Common.Infrastructure"
+             xmlns:sys="clr-namespace:System;assembly=mscorlib"
+             xmlns:prism="http://prismlibrary.com/" Name="ParentControl"
+             xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+             mc:Ignorable="d" Background="{DynamicResource Transparent}"
+             d:DesignHeight="450" d:DesignWidth="800" Focusable="True">
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <coreConverters:LengthToThicknessConverter x:Key="LeftBasedLengthToThicknessConverter" Left="True" Top="False" Right="False" Bottom="False"/>
+            <coreConverters:MultiplyConverter x:Key="NegativeMultiplyConverter" Negate="True"/>
+
+            <DataTemplate x:Key="FunctionalCalenderTemplate">
+                <Border Background="{DynamicResource CalenderAuxBrush}" x:Name="border" Margin="1" Padding="1" CornerRadius="5" BorderThickness="1" BorderBrush="#00FFFFFF">
+                    <Button Template="{DynamicResource ContentOnlyTemplate}" Style="{x:Null}">
+                        <i:Interaction.Triggers>
+                            <i:EventTrigger EventName="Click">
+                                <prism:InvokeCommandAction Command="{Binding ElementName=ParentControl, Path=DataContext.SelectDayCommand}" CommandParameter="{Binding}"/>
+                            </i:EventTrigger>
+                            <i:EventTrigger EventName="MouseDoubleClick">
+                                <prism:InvokeCommandAction Command="{Binding ElementName=ParentControl, Path=DataContext.ViewDayCommand}" CommandParameter="{Binding}"/>
+                            </i:EventTrigger>
+                        </i:Interaction.Triggers>
+                        <Button.InputBindings>
+                            <KeyBinding Command="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type UserControl}}, Path=DataContext.ViewSelectedDayCommand}" Key="Return"/>
+                        </Button.InputBindings>
+                        <Grid>
+                            <Grid.Style>
+                                <Style BasedOn="{x:Null}" TargetType="Grid">
+                                    <Style.Triggers>
+                                        <DataTrigger Binding="{Binding IsActive}" Value="True">
+                                            <Setter Property="Background" Value="{StaticResource CurrentCalenderBrush}"/>
+                                        </DataTrigger>
+                                        <!--
+                                            <DataTrigger Binding="{Binding IsMouseOver, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}" Value="True">
+                                                <Setter Property="Background" Value="{DynamicResource ActiveCalenderBrush}"/>
+                                            </DataTrigger>
+                                            -->
+                                    </Style.Triggers>
+                                </Style>
+                            </Grid.Style>
+                            <Grid>
+                                <i:Interaction.Triggers>
+                                    <i:EventTrigger EventName="MouseUp">
+                                        <prism:InvokeCommandAction Command="{Binding ElementName=ParentControl, Path=DataContext.SelectDayCommand}" CommandParameter="{Binding}"/>
+                                    </i:EventTrigger>
+                                    <i:EventTrigger EventName="MouseEnter">
+                                        <prism:InvokeCommandAction Command="{Binding ElementName=ParentControl, Path=DataContext.MouseOverDayCommand}" CommandParameter="{Binding}"/>
+                                    </i:EventTrigger>
+                                    <i:EventTrigger EventName="MouseLeave">
+                                        <prism:InvokeCommandAction Command="{Binding ElementName=ParentControl, Path=DataContext.MouseLeaveDayCommand}" CommandParameter="{Binding}"/>
+                                    </i:EventTrigger>
+                                </i:Interaction.Triggers>
+                                <Grid.Style>
+                                    <Style BasedOn="{x:Null}" TargetType="Grid">
+                                        <Style.Triggers>
+                                            <Trigger Property="IsMouseOver" Value="True">
+                                                <Setter Property="Background" Value="{DynamicResource ActiveCalenderBrush}"/>
+                                            </Trigger>
+                                            <DataTrigger Binding="{Binding IsEnabled}" Value="False">
+                                                <Setter Property="Opacity" Value=".5"/>
+                                            </DataTrigger>
+                                            <DataTrigger Binding="{Binding IsSelected}" Value="True">
+                                                <Setter Property="Background" Value="{DynamicResource ActiveCalenderBrush}"/>
+                                            </DataTrigger>
+                                        </Style.Triggers>
+                                    </Style>
+                                </Grid.Style>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="*"/>
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                </Grid.ColumnDefinitions>
+
+
+                                <coreControls:SmartEarthScrollViewer DynamicVerticalOffset="{Binding ViewOffsetY, Mode=TwoWay}" DynamicScrollableHeight="{Binding ViewHeight, Mode=OneWayToSource, UpdateSourceTrigger=PropertyChanged}" Grid.Row="1" Grid.ColumnSpan="2" HorizontalContentAlignment="Center" HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Hidden" Focusable="False">
+                                    <ItemsControl VirtualizingPanel.IsVirtualizing="True" Padding="5 15 0 15" Grid.Row="1" Grid.ColumnSpan="2" HorizontalContentAlignment="Center" ItemsSource="{Binding Tasks}" Focusable="False" Background="#20000000">
+                                        <ItemsControl.ItemTemplate>
+                                            <DataTemplate>
+                                                <Ellipse StrokeThickness=".3" Stroke="{DynamicResource MainBrush}" Height="20" Width="20" Margin="5 0 5 5" Fill="{Binding Color.Brush}" ToolTip="{Binding Name}"/>
+                                                <!--
+                                                    <Border Margin="1 2 10 2" Width="Auto" Height="5" CornerRadius="3" Background="{Binding Color.Brush}" ToolTip="{Binding Name}"/>
+                                                    -->
+                                            </DataTemplate>
+                                        </ItemsControl.ItemTemplate>
+                                        <ItemsControl.ItemsPanel>
+                                            <ItemsPanelTemplate>
+                                                <WrapPanel />
+                                            </ItemsPanelTemplate>
+                                        </ItemsControl.ItemsPanel>
+                                    </ItemsControl>
+                                </coreControls:SmartEarthScrollViewer>
+
+                                <TextBlock Grid.Column="0" Grid.Row="0" Padding="10" Background="#00FFFFFF" Foreground="{DynamicResource MainBrush}" FontWeight="Bold" TextAlignment="Right" Text="{Binding Value}"/>
+                            </Grid>
+                        </Grid>
+                    </Button>
+                </Border>
+            </DataTemplate>
+
+            <DataTemplate x:Key="EmptyCalenderTemplate">
+                <Border Background="{DynamicResource CalenderAuxBrush}" x:Name="border" Margin="1" Padding="1" CornerRadius="5" BorderThickness="1" BorderBrush="#00FFFFFF">
+                    <Grid>
+                        <Grid.Style>
+                            <Style BasedOn="{x:Null}" TargetType="Grid">
+                                <Style.Triggers>
+                                    <Trigger Property="IsMouseOver" Value="True">
+                                        <Setter Property="Background" Value="{DynamicResource ActiveCalenderBrush}"/>
+                                    </Trigger>
+                                    <DataTrigger Binding="{Binding IsEnabled}" Value="False">
+                                        <Setter Property="Opacity" Value=".5"/>
+                                    </DataTrigger>
+                                    <DataTrigger Binding="{Binding IsSelected}" Value="True">
+                                        <Setter Property="Background" Value="{DynamicResource ActiveCalenderBrush}"/>
+                                    </DataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </Grid.Style>
+
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="Auto"/>
+                        </Grid.ColumnDefinitions>
+
+
+                        <Border Background="#20000000" Grid.Row="1" Grid.ColumnSpan="2"/>
+                        <TextBlock Grid.Column="0" Grid.Row="0" Padding="10" Background="#00FFFFFF" Foreground="{DynamicResource MainBrush}" FontWeight="Bold" TextAlignment="Right"/>
+                    </Grid>
+                </Border>
+            </DataTemplate>
+
+            <ControlTemplate x:Key="NavigatableCalenderTemplate">
+                <ControlTemplate.Triggers>
+                    <DataTrigger Binding="{Binding Schedule.NavigateDirection}" Value="{x:Static core:NavigateDirection.Right}">
+                        <DataTrigger.EnterActions>
+                            <BeginStoryboard>
+                                <Storyboard FillBehavior="Stop">
+                                    <DoubleAnimationUsingKeyFrames DecelerationRatio=".5" Storyboard.TargetName="NextDummyBorder" Storyboard.TargetProperty="Width">
+                                        <EasingDoubleKeyFrame KeyTime="00:00:0.2" Value="0"/>
+                                    </DoubleAnimationUsingKeyFrames>
+
+                                    <DoubleAnimationUsingKeyFrames DecelerationRatio=".5" Storyboard.TargetName="MainDummyBorder" Storyboard.TargetProperty="Tag">
+                                        <EasingDoubleKeyFrame KeyTime="00:00:00" Value="0.0"/>
+                                        <EasingDoubleKeyFrame KeyTime="00:00:0.2" Value="-1.0"/>
+                                    </DoubleAnimationUsingKeyFrames>
+
+                                    <DoubleAnimation BeginTime="00:00:0.2" Duration="00:00:00" Storyboard.TargetName="NextDummyBorder" Storyboard.TargetProperty="Width" To="1"/>
+                                    <DoubleAnimation BeginTime="00:00:0.2" Duration="00:00:00" Storyboard.TargetName="MainDummyBorder" Storyboard.TargetProperty="Tag" To="0"/>
+                                </Storyboard>
+                            </BeginStoryboard>
+                        </DataTrigger.EnterActions>
+                    </DataTrigger>
+
+                    <DataTrigger Binding="{Binding Schedule.NavigateDirection}" Value="{x:Static core:NavigateDirection.Left}">
+                        <DataTrigger.EnterActions>
+                            <BeginStoryboard>
+                                <Storyboard>
+                                    <DoubleAnimationUsingKeyFrames DecelerationRatio=".5" Storyboard.TargetName="PreviousDummyBorder" Storyboard.TargetProperty="Width" FillBehavior="Stop">
+                                        <EasingDoubleKeyFrame KeyTime="00:00:0.2" Value="0"/>
+                                    </DoubleAnimationUsingKeyFrames>
+                                    <DoubleAnimationUsingKeyFrames DecelerationRatio=".5" Storyboard.TargetName="MainDummyBorder" Storyboard.TargetProperty="Tag" FillBehavior="Stop">
+                                        <EasingDoubleKeyFrame KeyTime="00:00:00" Value="0"/>
+                                        <EasingDoubleKeyFrame KeyTime="00:00:0.2" Value="1"/>
+                                    </DoubleAnimationUsingKeyFrames>
+<!--
+                                    <ObjectAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="MainDummyView" Storyboard.TargetProperty="Visibility">
+                                        <DiscreteObjectKeyFrame KeyTime="00:00:00" Value="{x:Static Visibility.Visible}"/>
+                                        <DiscreteObjectKeyFrame KeyTime="00:00:03" Value="{x:Static Visibility.Visible}"/>
+                                    </ObjectAnimationUsingKeyFrames>
+-->
+                                    <DoubleAnimation BeginTime="00:00:0.2" Duration="00:00:00" Storyboard.TargetName="PreviousDummyBorder" Storyboard.TargetProperty="Width" To="1" FillBehavior="Stop"/>
+                                    <DoubleAnimation BeginTime="00:00:0.2" Duration="00:00:00" Storyboard.TargetName="MainDummyBorder" Storyboard.TargetProperty="Tag" To="1" FillBehavior="Stop"/>
+                                    
+                                </Storyboard>
+                            </BeginStoryboard>
+                        </DataTrigger.EnterActions>
+                    </DataTrigger>
+
+                    <DataTrigger Binding="{Binding Schedule.NavigateDirection}" Value="{x:Static core:NavigateDirection.FarRight}">
+                        <DataTrigger.EnterActions>
+                            <BeginStoryboard>
+                                <Storyboard>
+                                    <DoubleAnimation Storyboard.TargetName="MainDummyViewBorder2" Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleX)" From="1.3" To="1" Duration="00:00:.3" />
+                                    <DoubleAnimation Storyboard.TargetName="MainDummyViewBorder2" Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleY)" From="1.3" To="1" Duration="00:00:.3" />
+
+                                    <ObjectAnimationUsingKeyFrames AutoReverse="True" FillBehavior="Stop" Duration="00:00:0.3" Storyboard.TargetName="MainDummyViewBorder2" Storyboard.TargetProperty="Visibility">
+                                        <DiscreteObjectKeyFrame KeyTime="00:00:00" Value="{x:Static Visibility.Visible}"/>
+                                    </ObjectAnimationUsingKeyFrames>
+                                </Storyboard>
+                            </BeginStoryboard>
+                        </DataTrigger.EnterActions>
+                    </DataTrigger>
+
+                    <DataTrigger Binding="{Binding Schedule.NavigateDirection}" Value="{x:Static core:NavigateDirection.FarLeft}">
+                        <DataTrigger.EnterActions>
+                            <BeginStoryboard>
+                                <Storyboard>
+                                    <DoubleAnimation Storyboard.TargetName="MainDummyViewBorder3" Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleX)" From="1.3" To="1" Duration="00:00:.3" />
+                                    <DoubleAnimation Storyboard.TargetName="MainDummyViewBorder3" Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleY)" From="1.3" To="1" Duration="00:00:.3" />
+
+                                    <ObjectAnimationUsingKeyFrames AutoReverse="True" FillBehavior="Stop" Duration="00:00:0.3" Storyboard.TargetName="MainDummyViewBorder3" Storyboard.TargetProperty="Visibility">
+                                        <DiscreteObjectKeyFrame KeyTime="00:00:00" Value="{x:Static Visibility.Visible}"/>
+                                    </ObjectAnimationUsingKeyFrames>
+                                </Storyboard>
+                            </BeginStoryboard>
+                        </DataTrigger.EnterActions>
+                    </DataTrigger>
+
+                    <DataTrigger Binding="{Binding Schedule.IsBusy}" Value="False">
+                        <DataTrigger.EnterActions>
+                            <BeginStoryboard>
+                                <Storyboard>
+                                    
+                                </Storyboard>
+                            </BeginStoryboard>
+                        </DataTrigger.EnterActions>
+                    </DataTrigger>
+                </ControlTemplate.Triggers>
+
+
+                <Grid ClipToBounds="True">
+                    <Border Name="MainBorder">
+                        <Border.RenderTransform>
+                            <TransformGroup>
+                                <TranslateTransform>
+                                    <TranslateTransform.X>
+                                        <MultiBinding Converter="{StaticResource MultiplyConverter}">
+                                            <Binding ElementName="MainDummyBorder" Path="Tag"/>
+                                            <Binding ElementName="MainBorder" Path="ActualWidth"/>
+                                        </MultiBinding>
+                                    </TranslateTransform.X>
+                                </TranslateTransform>
+                            </TransformGroup>
+                        </Border.RenderTransform>
+
+                        <Grid>
+                            <Border Name="MainDummyViewBorder">
+                                <ItemsControl Name="MainDummyView" Grid.Row="1" ItemsSource="{Binding Schedule.DummyView}" Background="Transparent" ItemTemplate="{StaticResource EmptyCalenderTemplate}">
+                                    <ItemsControl.ItemsPanel>
+                                        <ItemsPanelTemplate>
+                                            <UniformGrid Rows="6" Columns="7"/>
+                                        </ItemsPanelTemplate>
+                                    </ItemsControl.ItemsPanel>
+                                </ItemsControl>
+                            </Border>
+
+                            <Border Name="MainViewBorder" Opacity="1">
+                                <Border.Style>
+                                    <Style TargetType="Border">
+                                        <Style.Triggers>
+                                            <MultiDataTrigger>
+                                                <Setter Property="IsHitTestVisible" Value="False"/>
+                                                <MultiDataTrigger.Conditions>
+                                                    <Condition Binding="{Binding Schedule.ViewIsLoaded}" Value="False"/>
+                                                </MultiDataTrigger.Conditions>
+
+                                                <MultiDataTrigger.EnterActions>
+                                                    <BeginStoryboard>
+                                                        <Storyboard>
+                                                            <DoubleAnimation Storyboard.TargetProperty="Opacity" BeginTime="00:00:0.2" Duration="00:00:00" To="0"/>
+                                                        </Storyboard>
+                                                    </BeginStoryboard>
+                                                </MultiDataTrigger.EnterActions>
+
+                                                <MultiDataTrigger.ExitActions>
+                                                    <BeginStoryboard>
+                                                        <Storyboard>
+                                                            <DoubleAnimation To="1" DecelerationRatio=".5"  BeginTime="00:00:0.4" Duration="00:00:0.2" Storyboard.TargetProperty="Opacity"/>
+                                                        </Storyboard>
+                                                    </BeginStoryboard>
+                                                </MultiDataTrigger.ExitActions>
+
+                                            </MultiDataTrigger>
+                                        </Style.Triggers>
+                                    </Style>
+                                </Border.Style>
+                                <ItemsControl Name="MainView" Opacity="1" ItemsSource="{Binding Schedule.CurrentView}" Background="Transparent" ItemTemplate="{StaticResource FunctionalCalenderTemplate}">
+                                    <ItemsControl.ItemsPanel>
+                                        <ItemsPanelTemplate>
+                                            <UniformGrid Rows="6" Columns="7"/>
+                                        </ItemsPanelTemplate>
+                                    </ItemsControl.ItemsPanel>
+                                </ItemsControl>
+                            </Border>
+
+                            <Border Name="MainDummyViewBorder2" RenderTransformOrigin=".5, .5" Visibility="Hidden">
+                                <Border.RenderTransform>
+                                    <TransformGroup>
+                                        <ScaleTransform ScaleX="1.3" ScaleY="1.3"/>
+                                    </TransformGroup>
+                                </Border.RenderTransform>
+                                <!--
+                                <Border.Style>
+                                    <Style>
+                                        <Style.Triggers>
+                                            <DataTrigger>
+                                                <DataTrigger.EnterActions>
+                                                    <BeginStoryboard>
+                                                        <Storyboard>
+                                                            <ObjectAnimationUsingKeyFrames AutoReverse="True" FillBehavior="Stop" Duration="00:00:0.3" Storyboard.TargetName="MainDummyViewBorder22" Storyboard.TargetProperty="Visibility">
+                                                                <DiscreteObjectKeyFrame KeyTime="00:00:00" Value="{x:Static Visibility.Visible}"/>
+                                                            </ObjectAnimationUsingKeyFrames>
+                                                        </Storyboard>
+                                                    </BeginStoryboard>
+                                                </DataTrigger.EnterActions>
+                                            </DataTrigger>
+                                        </Style.Triggers>
+                                    </Style>
+                                </Border.Style>
+                                -->
+                                <ItemsControl Name="MainDummyView2" Grid.Row="1" ItemsSource="{Binding Schedule.DummyView}" Background="Transparent" ItemTemplate="{StaticResource EmptyCalenderTemplate}">
+                                    <ItemsControl.ItemsPanel>
+                                        <ItemsPanelTemplate>
+                                            <UniformGrid Rows="6" Columns="7"/>
+                                        </ItemsPanelTemplate>
+                                    </ItemsControl.ItemsPanel>
+                                </ItemsControl>
+                            </Border>
+
+                            <Border Name="MainDummyViewBorder3" RenderTransformOrigin=".5, .5" Visibility="Hidden">
+                                <Border.RenderTransform>
+                                    <TransformGroup>
+                                        <ScaleTransform ScaleX="1.3" ScaleY="1.3"/>
+                                    </TransformGroup>
+                                </Border.RenderTransform>
+                                <ItemsControl Name="MainDummyView3" Grid.Row="1" ItemsSource="{Binding Schedule.DummyView}" Background="Transparent" ItemTemplate="{StaticResource EmptyCalenderTemplate}">
+                                    <ItemsControl.ItemsPanel>
+                                        <ItemsPanelTemplate>
+                                            <UniformGrid Rows="6" Columns="7"/>
+                                        </ItemsPanelTemplate>
+                                    </ItemsControl.ItemsPanel>
+                                </ItemsControl>
+                            </Border>
+                        </Grid>
+                        
+                    </Border>
+
+
+                    <!--#region Dummies-->
+                    <Border Name="PreviousDummyBorder" Width="1" Visibility="Hidden"/>
+
+                    <Border Name="MainDummyBorder"  Width="1" Visibility="Hidden">
+                        <Border.Tag>
+                            <sys:Double>0</sys:Double>
+                        </Border.Tag>
+                    </Border>
+
+                    <Border Name="NextDummyBorder" Width="1" Visibility="Hidden"/>
+                    <!--#endregion-->
+                    
+                    
+                    <!--  Padding="{Binding ElementName=MainView, Path=ActualWidth, Converter={StaticResource LeftBasedLengthToThicknessConverter}}"  -->
+                    <Border RenderTransformOrigin=".5, .5" Name="NextBorder">
+                        <Border.RenderTransform>
+                            <TransformGroup>
+                                <TranslateTransform>
+                                    <TranslateTransform.X>
+                                        <MultiBinding Converter="{StaticResource MathConverter}" ConverterParameter="(a * b) + (50 * a)">
+                                            <Binding ElementName="NextDummyBorder" Path="ActualWidth"/>
+                                            <Binding ElementName="MainBorder" Path="ActualWidth"/>
+                                            <!--
+                                            <Binding ElementName="NextDummyBorder" Path="Tag"/>
+                                            -->
+                                        </MultiBinding>
+                                    </TranslateTransform.X>
+                                </TranslateTransform>
+                                <ScaleTransform ScaleX="1" ScaleY="1"/>
+                            </TransformGroup>
+                        </Border.RenderTransform>
+                        <ItemsControl Name="NextView" Grid.Row="1" ItemsSource="{Binding Schedule.DummyView}" Background="Transparent" ItemTemplate="{StaticResource EmptyCalenderTemplate}">
+                            <ItemsControl.ItemsPanel>
+                                <ItemsPanelTemplate>
+                                    <UniformGrid Rows="6" Columns="7"/>
+                                </ItemsPanelTemplate>
+                            </ItemsControl.ItemsPanel>
+                        </ItemsControl>
+                    </Border>
+
+                    <Border RenderTransformOrigin=".5, .5" Name="PreviousBorder">
+                        <Border.RenderTransform>
+                            <TransformGroup>
+                                <TranslateTransform>
+                                    <TranslateTransform.X>
+                                        <MultiBinding Converter="{StaticResource MathConverter}" ConverterParameter="(a * -b) - (20 * a)">
+                                            <Binding ElementName="PreviousDummyBorder" Path="ActualWidth"/>
+                                            <Binding ElementName="MainBorder" Path="ActualWidth"/>
+                                            <!--
+                                            <Binding ElementName="NextDummyBorder" Path="Tag"/>
+                                            -->
+                                        </MultiBinding>
+                                    </TranslateTransform.X>
+                                </TranslateTransform>
+                            </TransformGroup>
+                        </Border.RenderTransform>
+                        <ItemsControl Name="PreviousView" Grid.Row="1" ItemsSource="{Binding Schedule.DummyView}" Background="Transparent" ItemTemplate="{StaticResource EmptyCalenderTemplate}">
+                            <ItemsControl.ItemsPanel>
+                                <ItemsPanelTemplate>
+                                    <UniformGrid Rows="6" Columns="7"/>
+                                </ItemsPanelTemplate>
+                            </ItemsControl.ItemsPanel>
+                        </ItemsControl>
+                    </Border>
+                </Grid>
+                
+            </ControlTemplate>
+        </ResourceDictionary>
+    </UserControl.Resources>
+    <UserControl.InputBindings>
+        <KeyBinding Command="{Binding SelectUpCommand}" Key="Up"/>
+        <KeyBinding Command="{Binding SelectDownCommand}" Key="Down"/>
+        <KeyBinding Command="{Binding SelectLeftCommand}" Key="Left"/>
+        <KeyBinding Command="{Binding SelectRightCommand}" Key="Right"/>
+        <KeyBinding Command="{Binding ScrollDayUpCommand}" Modifiers="Shift" Key="Up" />
+        <KeyBinding Command="{Binding ScrollDayDownCommand}" Modifiers="Shift" Key="Down"/>
+        <KeyBinding Command="{Binding ViewSelectedDayCommand}" Key="Return"/>
+        <KeyBinding Command="{Binding PreviousMonthCommand}" Modifiers="Ctrl" Key="Left"/>
+        <KeyBinding Command="{Binding NextMonthCommand}" Modifiers="Ctrl" Key="Right"/>
+    </UserControl.InputBindings>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <!--
+        <Grid.Style>
+            <Style TargetType="Grid">
+                <Style.Triggers>
+                    <DataTrigger Binding="{Binding Calender.NavigationDirection}" Value="Right">
+                        <DataTrigger.EnterActions>
+                            <BeginStoryboard>
+                                <Storyboard>
+                                    <DoubleAnimationUsingKeyFrames Storyboard.TargetName="NextBorder" Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(TranslateTransform.X)">
+                                        <EasingDoubleKeyFrame KeyTime="00:00:0.3" Value="0"/>
+                                    </DoubleAnimationUsingKeyFrames>
+                                </Storyboard>
+                            </BeginStoryboard>
+                        </DataTrigger.EnterActions>
+                    </DataTrigger>
+                </Style.Triggers>
+            </Style>
+        </Grid.Style>
+        -->
+        <ItemsControl DockPanel.Dock="Top" Background="{DynamicResource AuxBrush}" Margin="2 2" Height="70" ItemsSource="{DynamicResource DAYS_OF_THE_WEEK}">
+            <ItemsControl.Effect>
+                <DropShadowEffect BlurRadius="5" ShadowDepth="1" Direction="270"/>
+            </ItemsControl.Effect>
+            <ItemsControl.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel VerticalAlignment="Center">
+                        <TextBlock Text="{Binding}" Foreground="{DynamicResource MainBrush}" Background="#00FFFFFF" FontSize="20" FontWeight="Bold" TextAlignment="Center"/>
+                    </StackPanel>
+                </DataTemplate>
+            </ItemsControl.ItemTemplate>
+            <ItemsControl.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <UniformGrid Rows="1" Columns="7"/>
+                </ItemsPanelTemplate>
+            </ItemsControl.ItemsPanel>
+        </ItemsControl>
+
+
+        <Control Grid.Row="1" Template="{StaticResource NavigatableCalenderTemplate}"/>
+
+    </Grid>
+</UserControl>

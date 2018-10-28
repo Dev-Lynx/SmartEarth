@@ -1,0 +1,222 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:SmartEarth.Common.Infrastructure.Resources.Languages.English_US"
+                    xmlns:system="clr-namespace:System;assembly=mscorlib"
+                    xmlns:collections="clr-namespace:SmartEarth.Common.Infrastructure.Resources.Collections">
+
+    <!--#region Views-->
+
+    <!--#region Menu-->
+
+    <!--#region Home Tab-->
+    <system:String x:Key="MENU_HOME">Home</system:String>
+    <system:String x:Key="MENU_HOME_START_AUTOMATION">Start An Automation</system:String>
+    <system:String x:Key="MENU_HOME_SCHEDULE_TASK">Schedule A Task</system:String>
+    <!--#endregion-->
+
+    <!--#region Schedule Tab-->
+    <system:String x:Key="MENU_SCHEDULE">Schedule</system:String>
+    <system:String x:Key="MENU_SCHEDULE_VIEW_SHEDULE">View Schedule</system:String>
+    <system:String x:Key="MENU_SCHEDULE_SHOW_COMPLETED_TASKS">Show Completed Tasks</system:String>
+    <system:String x:Key="MENU_SCHEDULE_SHOW_PENDING_TASKS">Show Pending Tasks</system:String>
+    <system:String x:Key="MENU_SCHEDULE_NEW_TASK">Create A Task</system:String>
+    <system:String x:Key="MENU_SCHEDULE_LOAD_FROM_KML">Load From Kml</system:String>
+    <!--#endregion-->
+
+    <!--#region Viewer Tab-->
+    <system:String x:Key="MENU_VIEWER">Viewer</system:String>
+    <system:String x:Key="MENU_VIEWER_ZOOM_IN">Zoom In</system:String>
+    <system:String x:Key="MENU_VIEWER_ZOOM_OUT">Zoom Out</system:String>
+    <system:String x:Key="MENU_VIEWER_RESIZE">Resize To Original Size</system:String>
+    <system:String x:Key="MENU_VIEWER_INFORMATION">Information</system:String>
+    <!--#endregion-->
+
+    <!--#region Settings Tab-->
+    <system:String x:Key="MENU_SETTINGS">Settings</system:String>
+    <!--#endregion-->
+
+    <!--#endregion-->
+    
+    <!--#region NewTask View-->
+    <system:String x:Key="NAME">Name</system:String>
+    <system:String x:Key="DESCRIPTION">Description</system:String>
+    <system:String x:Key="LATITUDE">Latitude</system:String>
+    <system:String x:Key="LONGITUDE">Longitude</system:String>
+    <system:String x:Key="HEADING">Heading</system:String>
+    <system:String x:Key="RANGE">Range</system:String>
+    <system:String x:Key="TILT">Tilt</system:String>
+    <system:String x:Key="ALTITUDE">Altitude</system:String>
+    <!--#endregion-->
+    
+    <!--#region Calender View-->
+    <system:String x:Key="CALENDER_LOADING">Building Calender...</system:String>
+    <system:String x:Key="CALENDER_SYNCHRONIZING">Synchronizing...</system:String>
+    <!--#endregion-->
+
+    <!--#endregion-->
+
+    <!--#region Modal Windows-->
+    
+    <system:String x:Key="MODAL_NEW_AUTOMATION_TITLE">New Automation</system:String>
+    <system:String x:Key="MODAL_NEW_AUTOMATION_HEADING">Run An Automation</system:String>
+    <system:String x:Key="MODAL_NEW_AUTOMATION_LATITUDE">Latitude</system:String>
+    <system:String x:Key="MODAL_NEW_AUTOMATION_LONGITUDE">Longitude</system:String>
+    <system:String x:Key="MODAL_NEW_AUTOMATION_RANGE">Range</system:String>
+    <system:String x:Key="MODAL_NEW_AUTOMATION_LOCATION_HEADING">Heading</system:String>
+    <system:String x:Key="MODAL_NEW_AUTOMATION_TILT">Tilt</system:String>
+    <!--#endregion-->
+    
+    <!--#region Views-->
+    <!--#endregion-->
+    
+    
+    <!--#region Misc-->
+    
+    <!--#region Collections-->
+    <collections:StringCollection x:Key="DAYS_OF_THE_WEEK">
+        <system:String>Sunday</system:String>
+        <system:String>Monday</system:String>
+        <system:String>Tuesday</system:String>
+        <system:String>Wednesday</system:String>
+        <system:String>Thursday</system:String>
+        <system:String>Friday</system:String>
+        <system:String>Saturday</system:String>
+    </collections:StringCollection>
+
+    <system:String x:Key="MONDAY">Monday</system:String>
+    <system:String x:Key="TUESDAY">Tuesday</system:String>
+    <system:String x:Key="WEDNESDAY">Wednesday</system:String>
+    <system:String x:Key="THURSDAY">Thursday</system:String>
+    <system:String x:Key="FRIDAY">Friday</system:String>
+    <system:String x:Key="SATURDAY">Saturday</system:String>
+    <system:String x:Key="SUNDAY">Sunday</system:String>
+
+    <collections:StringCollection x:Key="DAYS_OF_THE_WEEK_SHORT">
+        <system:String>Mon</system:String>
+        <system:String>Tue</system:String>
+        <system:String>Wed</system:String>
+        <system:String>Thu</system:String>
+        <system:String>Fri</system:String>
+        <system:String>Sat</system:String>
+        <system:String>Sun</system:String>
+    </collections:StringCollection>
+
+    <system:String x:Key="MONDAY_SHORT">Mon</system:String>
+    <system:String x:Key="TUESDAY_SHORT">Tue</system:String>
+    <system:String x:Key="WEDNESDAY_SHORT">Wed</system:String>
+    <system:String x:Key="THURSDAY_SHORT">Thu</system:String>
+    <system:String x:Key="FRIDAY_SHORT">Fri</system:String>
+    <system:String x:Key="SATURDAY_SHORT">Sat</system:String>
+    <system:String x:Key="SUNDAY_SHORT">Sun</system:String>
+
+    <collections:StringCollection x:Key="MONTHS_OF_THE_YEAR">
+        <system:String>January</system:String>
+        <system:String>February</system:String>
+        <system:String>March</system:String>
+        <system:String>April</system:String>
+        <system:String>May</system:String>
+        <system:String>June</system:String>
+        <system:String>July</system:String>
+        <system:String>August</system:String>
+        <system:String>September</system:String>
+        <system:String>October</system:String>
+        <system:String>November</system:String>
+        <system:String>December</system:String>
+    </collections:StringCollection>
+
+    <system:String x:Key="JANUARY">January</system:String>
+    <system:String x:Key="FEBRUARY">February</system:String>
+    <system:String x:Key="MARCH">March</system:String>
+    <system:String x:Key="APRIL">April</system:String>
+    <system:String x:Key="MAY">May</system:String>
+    <system:String x:Key="JUNE">June</system:String>
+    <system:String x:Key="JULY">July</system:String>
+    <system:String x:Key="AUGUST">August</system:String>
+    <system:String x:Key="SEPTEMBER">September</system:String>
+    <system:String x:Key="OCTOBER">October</system:String>
+    <system:String x:Key="NOVEMBER">November</system:String>
+    <system:String x:Key="DECEMBER">December</system:String>
+
+    <system:String x:Key="JANUARY_SHORT">Jan</system:String>
+    <system:String x:Key="FEBRUARY_SHORT">Feb</system:String>
+    <system:String x:Key="MARCH_SHORT">Mar</system:String>
+    <system:String x:Key="APRIL_SHORT">Apr</system:String>
+    <system:String x:Key="MAY_SHORT">May</system:String>
+    <system:String x:Key="JUNE_SHORT">Jun</system:String>
+    <system:String x:Key="JULY_SHORT">Jul</system:String>
+    <system:String x:Key="AUGUST_SHORT">Aug</system:String>
+    <system:String x:Key="SEPTEMBER_SHORT">Sept</system:String>
+    <system:String x:Key="OCTOBER_SHORT">Oct</system:String>
+    <system:String x:Key="NOVEMBER_SHORT">Nov</system:String>
+    <system:String x:Key="DECEMBER_SHORT">Dec</system:String>
+
+    <collections:StringCollection x:Key="REPETITION_COLLECTION">
+        <system:String>Hourly</system:String>
+        <system:String>Daily</system:String>
+        <system:String>Weekly</system:String>
+        <system:String>Monthly</system:String>
+        <system:String>Yearly</system:String>
+    </collections:StringCollection>
+
+    
+    <system:String x:Key="DAILY">Daily</system:String>
+    <system:String x:Key="WEEKLY">Weekly</system:String>
+    <system:String x:Key="MONTHLY">Monthly</system:String>
+    <system:String x:Key="YEARLY">Yearly</system:String>
+
+    <collections:StringCollection x:Key="days_weeks_months_years">
+        <system:String>hours(s)</system:String>
+        <system:String>day(s)</system:String>
+        <system:String>week(s)</system:String>
+        <system:String>month(s)</system:String>
+        <system:String>year(s)</system:String>
+    </collections:StringCollection>
+    
+    <system:String x:Key="DAY(S)">Day(s)</system:String>
+    <system:String x:Key="WEEK(S)">Week(s)</system:String>
+    <system:String x:Key="MONTH(S)">Month(s)</system:String>
+    <system:String x:Key="YEAR(S)">Year(s)</system:String>
+
+    
+    
+    <system:String x:Key="RED">Red</system:String>
+    <system:String x:Key="GREEN">Green</system:String>
+    <system:String x:Key="BLUE">Blue</system:String>
+    <system:String x:Key="ORANGE">Orange</system:String>
+    <system:String x:Key="YELLOW">Yellow</system:String>
+    <system:String x:Key="INDIG0">Indigo</system:String>
+    <system:String x:Key="VIOLET">Violet</system:String>
+    <system:String x:Key="WHITE">Violet</system:String>
+    <system:String x:Key="BLACK">Violet</system:String>
+
+    <system:String x:Key="COLOR">Color</system:String>
+
+
+    <collections:StringCollection x:Key="AFTER_ON_COLLECTION">
+        <system:String>after</system:String>
+        <system:String>on</system:String>
+    </collections:StringCollection>
+
+    <system:String x:Key="AFTER">After</system:String>
+    <system:String x:Key="ON">On</system:String>
+    <system:String x:Key="EVERY">Every</system:String>
+    <system:String x:Key="A">A</system:String>
+    <system:String x:Key="a">a</system:String>
+    <system:String x:Key="An">An</system:String>
+    <system:String x:Key="an">an</system:String>
+    <system:String x:Key="At">At</system:String>
+    <system:String x:Key="at">at</system:String>
+    <system:String x:Key="interval">interval</system:String>
+    <!--#endregion-->
+
+    <system:String x:Key="EMPTY_TASK_REMARK">No Tasks have been scheduled yet...</system:String>
+    <system:String x:Key="NEW_TASK">New Task</system:String>
+    <system:String x:Key="REPEAT_TASK">Repeat</system:String>
+    <system:String x:Key="EXPIRE">Expire</system:String>
+    <system:String x:Key="runs">runs</system:String>
+    <system:String x:Key="DONE">Done</system:String>
+    <system:String x:Key="START">Start</system:String>
+    <system:String x:Key="CANCEL">Cancel</system:String>
+    <!--#endregion-->
+
+</ResourceDictionary>

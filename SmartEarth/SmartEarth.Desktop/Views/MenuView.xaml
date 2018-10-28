@@ -1,0 +1,113 @@
+﻿<UserControl x:Class="SmartEarth.Desktop.Views.MenuView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:SmartEarth.Desktop.Views"
+             xmlns:ribbon="http://schemas.microsoft.com/winfx/2006/xaml/presentation/ribbon"
+             xmlns:coreControls="clr-namespace:SmartEarth.Common.Infrastructure.Resources.Controls;assembly=SmartEarth.Common.Infrastructure"
+             xmlns:prism="http://prismlibrary.com/"
+             xmlns:core="clr-namespace:SmartEarth.Common.Infrastructure;assembly=SmartEarth.Common.Infrastructure"
+             xmlns:views="clr-namespace:SmartEarth.Desktop.Views"
+             xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+             mc:Ignorable="d" prism:ViewModelLocator.AutoWireViewModel="True"
+             d:DesignHeight="120" d:DesignWidth="800">
+    <UserControl.Resources>
+        <ResourceDictionary>
+
+            <DataTemplate x:Key="SmartEarth">
+                <StackPanel Margin="0 0 0 -15" HorizontalAlignment="Center" VerticalAlignment="Center" Orientation="Horizontal" >
+                    <Border>
+                        <Border.Effect>
+                            <DropShadowEffect Color="#7feeeeee" BlurRadius="2" Direction="90" ShadowDepth=".5"/>
+                        </Border.Effect>
+                        <Border>
+                            <Border.Effect>
+                                <DropShadowEffect Color="#7f333333" BlurRadius="2" Direction="270" ShadowDepth="0.3" Opacity=".7"/>
+                            </Border.Effect>
+                            <Image Source="{DynamicResource SmartEarthLogo}" Style="{DynamicResource ClearImage}"/>
+                        </Border>
+                    </Border>
+                </StackPanel>
+            </DataTemplate>
+            
+        </ResourceDictionary>
+    </UserControl.Resources>
+    <i:Interaction.Triggers>
+        <prism:InteractionRequestTrigger SourceObject="{Binding NewAutomationRequest}">
+            <prism:PopupWindowAction IsModal="True" WindowStyle="{DynamicResource ModalWindow}"  WindowStartupLocation="CenterScreen">
+                <prism:PopupWindowAction.WindowContent>
+                    <views:NewAutomationView/>
+                </prism:PopupWindowAction.WindowContent>
+            </prism:PopupWindowAction>
+        </prism:InteractionRequestTrigger>
+        <prism:InteractionRequestTrigger SourceObject="{Binding ViewProgressRequest}">
+            <prism:PopupWindowAction IsModal="False" WindowStyle="{DynamicResource BorderlessTopmostWindow}">
+                <prism:PopupWindowAction.WindowContent>
+                    <views:TaskProgressView />
+                </prism:PopupWindowAction.WindowContent>
+            </prism:PopupWindowAction>
+        </prism:InteractionRequestTrigger>
+    </i:Interaction.Triggers>
+    <Grid>
+
+        <coreControls:SmartEarthRibbon Padding="3" Background="{DynamicResource MenuBackgroundBrush}">
+            <i:Interaction.Triggers>
+                <i:EventTrigger EventName="SelectionChanged">
+                    <i:InvokeCommandAction Command="{Binding SelectionChangedCommand}" CommandParameter="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type coreControls:SmartEarthRibbon}}, Path=SelectedItem}"/>
+                </i:EventTrigger>
+            </i:Interaction.Triggers>
+
+            <ribbon:Ribbon.ApplicationMenu>
+                <ribbon:RibbonApplicationMenu LargeImageSource="{DynamicResource GlobeIcon}" Background="{DynamicResource Transparent}">
+
+                </ribbon:RibbonApplicationMenu>
+            </ribbon:Ribbon.ApplicationMenu>
+            <coreControls:SmartEarthRibbonTab Header="{DynamicResource MENU_HOME}" Region="{x:Static core:Core.MAIN_REGION}" View="{x:Static core:Core.HOME_VIEW}">
+                <ribbon:RibbonGroup>
+                    <ribbon:RibbonContentPresenter ContentTemplate="{DynamicResource SmartEarth}"/>
+                </ribbon:RibbonGroup>
+                <ribbon:RibbonGroup>
+                    <ribbon:RibbonButton Command="{Binding StartAutomationCommand}" SmallImageSource="{DynamicResource PlayIcon16}" LargeImageSource="{DynamicResource PlayIcon32}" Label="{DynamicResource MENU_HOME_START_AUTOMATION}"/>
+                </ribbon:RibbonGroup>
+            </coreControls:SmartEarthRibbonTab>
+            <coreControls:SmartEarthRibbonTab Header="{DynamicResource MENU_SCHEDULE}" Region="{x:Static core:Core.MAIN_REGION}" View="{x:Static core:Core.SCHEDULE_VIEW}">
+                <ribbon:RibbonGroup>
+                    <ribbon:RibbonContentPresenter ContentTemplate="{DynamicResource SmartEarth}"/>
+                </ribbon:RibbonGroup>
+
+                <ribbon:RibbonGroup>
+                    <ribbon:RibbonGroup.Visibility>
+                        <MultiBinding Converter="{StaticResource BooleanAndToVisibilityConverter}">
+                            <Binding Path="CalenderView"/>
+                        </MultiBinding>
+                    </ribbon:RibbonGroup.Visibility>
+                    <ribbon:RibbonButton Command="{Binding ViewScheduleCommand}" SmallImageSource="{DynamicResource ScheduleIcon16}" LargeImageSource="{DynamicResource ScheduleIcon32}" Label="{DynamicResource MENU_SCHEDULE_VIEW_SHEDULE}"/>
+                </ribbon:RibbonGroup>
+                
+                <ribbon:RibbonGroup>
+                    <ribbon:RibbonToggleButton Command="{Binding ShowCompletedTaskCommand}" SmallImageSource="{DynamicResource ScheduleCheckIcon16}" LargeImageSource="{DynamicResource ScheduleCheckIcon32}" Label="{DynamicResource MENU_SCHEDULE_SHOW_COMPLETED_TASKS}"/>
+                    <ribbon:RibbonToggleButton Command="{Binding ShowPendingTaskCommand}" SmallImageSource="{DynamicResource SchedulePendingIcon16}" LargeImageSource="{DynamicResource SchedulePendingIcon32}" Label="{DynamicResource MENU_SCHEDULE_SHOW_PENDING_TASKS}"/>
+                </ribbon:RibbonGroup>
+            </coreControls:SmartEarthRibbonTab>
+            <coreControls:SmartEarthRibbonTab IsSelected="{Binding ViewerActive}" Visibility="{Binding ViewerActive, Converter={StaticResource BoolToVisibilityConverter}}" Header="{DynamicResource MENU_VIEWER}" Region="{x:Static core:Core.MAIN_REGION}" View="{x:Static core:Core.IMAGE_VIEW}">
+                <ribbon:RibbonGroup>
+                    <ribbon:RibbonContentPresenter ContentTemplate="{DynamicResource SmartEarth}"/>
+                </ribbon:RibbonGroup>
+                <ribbon:RibbonGroup>
+                    <ribbon:RibbonButton Command="{Binding ZoomInCommand}" SmallImageSource="{DynamicResource ZoomPlusIcon16}" LargeImageSource="{DynamicResource ZoomPlusIcon32}" Label="{DynamicResource MENU_VIEWER_ZOOM_IN}"/>
+                    <ribbon:RibbonButton Command="{Binding ZoomOutCommand}"  SmallImageSource="{DynamicResource ZoomMinusIcon16}" LargeImageSource="{DynamicResource ZoomMinusIcon32}" Label="{DynamicResource MENU_VIEWER_ZOOM_OUT}"/>
+                    <ribbon:RibbonButton Command="{Binding ResizeToOriginalCommand}" SmallImageSource="{DynamicResource ResizeIcon16}" LargeImageSource="{DynamicResource ResizeIcon32}" Label="{DynamicResource MENU_VIEWER_RESIZE}"/>
+                    <ribbon:RibbonButton Command="{Binding InformationCommand}" SmallImageSource="{DynamicResource InformationIcon16}" LargeImageSource="{DynamicResource InformationIcon32}" Label="{DynamicResource MENU_VIEWER_INFORMATION}"/>
+                </ribbon:RibbonGroup>
+            </coreControls:SmartEarthRibbonTab>
+            <!--
+            <coreControls:SmartEarthRibbonTab Header="{DynamicResource MENU_SETTINGS}" Region="{x:Static core:Core.MAIN_REGION}" View="{x:Static core:Core.}">
+            </coreControls:SmartEarthRibbonTab>
+            -->
+        </coreControls:SmartEarthRibbon>
+        <Grid.Effect>
+            <DropShadowEffect BlurRadius="2" Direction="270" ShadowDepth=".7"/>
+        </Grid.Effect>
+    </Grid>
+</UserControl>

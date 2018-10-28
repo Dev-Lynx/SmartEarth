@@ -1,0 +1,889 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Geospatial</name>
+    </assembly>
+    <members>
+        <member name="T:Geospatial.Angle">
+            <summary>
+            Stores an angle and allows conversion to different formats.
+            </summary>
+        </member>
+        <member name="M:Geospatial.Angle.#ctor(System.Double)">
+            <summary>
+            Initializes a new instance of the Angle class.
+            </summary>
+            <param name="radians">The value for the angle in radians.</param>
+        </member>
+        <member name="P:Geospatial.Angle.Degrees">
+            <summary>Gets the whole number of degrees from the angle.</summary>
+        </member>
+        <member name="P:Geospatial.Angle.Minutes">
+            <summary>Gets the whole number of minutes from the angle.</summary>
+        </member>
+        <member name="P:Geospatial.Angle.Seconds">
+            <summary>Gets the number of seconds from the angle.</summary>
+        </member>
+        <member name="P:Geospatial.Angle.Radians">
+            <summary>Gets the value of the angle in radians.</summary>
+        </member>
+        <member name="P:Geospatial.Angle.TotalDegrees">
+            <summary>Gets the value of the angle in degrees.</summary>
+        </member>
+        <member name="P:Geospatial.Angle.TotalMinutes">
+            <summary>Gets the value of the angle in minutes.</summary>
+        </member>
+        <member name="P:Geospatial.Angle.TotalSeconds">
+            <summary>Gets the value of the angle in seconds.</summary>
+        </member>
+        <member name="M:Geospatial.Angle.FromDegrees(System.Double)">
+            <summary>Creates a new angle from an amount in degrees.</summary>
+            <param name="degrees">The value for the angle in degrees.</param>
+            <returns>A new Angle representing the specified value.</returns>
+        </member>
+        <member name="M:Geospatial.Angle.FromDegrees(System.Double,System.Double)">
+            <summary>
+            Creates a new angle from an amount in degrees and minutes.
+            </summary>
+            <param name="degrees">The amount of degrees.</param>
+            <param name="minutes">The amount of minutes.</param>
+            <returns>A new Angle representing the specified value.</returns>
+        </member>
+        <member name="M:Geospatial.Angle.FromDegrees(System.Double,System.Double,System.Double)">
+            <summary>
+            Creates a new angle from an amount in degrees, minutes and seconds.
+            </summary>
+            <param name="degrees">The amount of degrees.</param>
+            <param name="minutes">The amount of minutes.</param>
+            <param name="seconds">The amount of seconds.</param>
+            <returns>A new Angle representing the specified value.</returns>
+        </member>
+        <member name="M:Geospatial.Angle.FromRadians(System.Double)">
+            <summary>Creates a new angle from an amount in radians.</summary>
+            <param name="radians">The value for the angle in radians.</param>
+            <returns>A new Angle representing the specified value.</returns>
+        </member>
+        <member name="M:Geospatial.Angle.Negate(Geospatial.Angle)">
+            <summary>
+            Returns the result of multiplying the specified value by negative one.
+            </summary>
+            <param name="angle">The angle to negate.</param>
+            <returns>
+            An angle that is the value as the specified value parameter multiplied
+            by negative one.
+            </returns>
+            <exception cref="T:System.ArgumentNullException">angle is null.</exception>
+        </member>
+        <member name="M:Geospatial.Angle.op_Inequality(Geospatial.Angle,Geospatial.Angle)">
+            <summary>
+            Determines whether two specified Angles have different values.
+            </summary>
+            <param name="angleA">The first Angle to compare, or null.</param>
+            <param name="angleB">The second Angle to compare, or null.</param>
+            <returns>
+            true if the value of angleA is different from the value of angleB;
+            otherwise, false.
+            </returns>
+        </member>
+        <member name="M:Geospatial.Angle.op_LessThan(Geospatial.Angle,Geospatial.Angle)">
+            <summary>
+            Determines whether a specified Angle value is less than another
+            specified Angle value.
+            </summary>
+            <param name="angleA">The first Angle to compare, or null.</param>
+            <param name="angleB">The second Angle to compare, or null.</param>
+            <returns>
+            true if the value of angleA is less than the value of angleB;
+            otherwise, false. If either of the specified value parameters are
+            null then this method will return false.
+            </returns>
+        </member>
+        <member name="M:Geospatial.Angle.op_LessThanOrEqual(Geospatial.Angle,Geospatial.Angle)">
+            <summary>
+            Determines whether a specified Angle value is less than or equal
+            to another specified Angle value.
+            </summary>
+            <param name="angleA">The first Angle to compare, or null.</param>
+            <param name="angleB">The second Angle to compare, or null.</param>
+            <returns>
+            true if the value of angleA is less than or equal to the value of
+            angleB; otherwise, false. If either of the specified value parameters
+            are null then this method will return false.
+            </returns>
+        </member>
+        <member name="M:Geospatial.Angle.op_Equality(Geospatial.Angle,Geospatial.Angle)">
+            <summary>
+            Determines whether two specified Angles have the same value.
+            </summary>
+            <param name="angleA">The first Angle to compare, or null.</param>
+            <param name="angleB">The second Angle to compare, or null.</param>
+            <returns>
+            true if the value of angleA is the same as the value of angleB;
+            otherwise, false.
+            </returns>
+        </member>
+        <member name="M:Geospatial.Angle.op_GreaterThan(Geospatial.Angle,Geospatial.Angle)">
+            <summary>
+            Determines whether a specified Angle value is greater than another
+            specified Angle value.
+            </summary>
+            <param name="angleA">The first Angle to compare, or null.</param>
+            <param name="angleB">The second Angle to compare, or null.</param>
+            <returns>
+            true if the value of angleA is greater than the value of angleB;
+            otherwise, false. If either of the specified value parameters are
+            null then this method will return false.
+            </returns>
+        </member>
+        <member name="M:Geospatial.Angle.op_GreaterThanOrEqual(Geospatial.Angle,Geospatial.Angle)">
+            <summary>
+            Determines whether a specified Angle value is greater than or equal
+            to another specified Angle value.
+            </summary>
+            <param name="angleA">The first Angle to compare, or null.</param>
+            <param name="angleB">The second Angle to compare, or null.</param>
+            <returns>
+            true if the value of angleA is greater than or equal to the value of
+            angleB; otherwise, false. If either of the specified value parameters
+            are null then this method will return false.
+            </returns>
+        </member>
+        <member name="M:Geospatial.Angle.CompareTo(Geospatial.Angle)">
+            <summary>
+            Compares this instance with a specified Angle object and indicates
+            whether the value of this instance is less than, equal to, or greater
+            than the value of the specified Angle object.
+            </summary>
+            <param name="other">An Angle to compare with this instance.</param>
+            <returns>
+            <para>A signed number indicating the relative values of this instance
+            and value parameter.</para>
+            <para>A return value less than zero indicates this instance is less
+            than other or this instance represents an angle that is not a number
+            (double.NaN) and the angle of other is a number.</para>
+            <para>A return value of zero indicates this instance represents the
+            same angle as other.</para>
+            <para>A return value greater than zero indicates this instance is
+            greater than other or this instance represents an angle that is a
+            number and the angle of other is not a number (double.NaN) or other
+            is null.</para>
+            </returns>
+        </member>
+        <member name="M:Geospatial.Angle.Equals(System.Object)">
+            <summary>
+            Determines whether this instance and a specified object, which must
+            also be an Angle, have the same value.
+            </summary>
+            <param name="obj">The Angle to compare to this instance.</param>
+            <returns>
+            true if obj is an Angle and its value is the same as this instance;
+            otherwise, false.
+            </returns>
+        </member>
+        <member name="M:Geospatial.Angle.Equals(Geospatial.Angle)">
+            <summary>
+            Determines whether this instance and another specified Angle object
+            have the same value.
+            </summary>
+            <param name="other">The Angle to compare to this instance.</param>
+            <returns>
+            true if the value of the value parameter is the same as this instance;
+            otherwise, false.
+            </returns>
+        </member>
+        <member name="M:Geospatial.Angle.GetHashCode">
+            <summary>Returns the hash code for this instance.</summary>
+            <returns>A 32-bit signed integer hash code.</returns>
+        </member>
+        <member name="M:Geospatial.Angle.ToString">
+            <summary>
+            Returns a string that represents the current Angle in degrees,
+            minutes and seconds form.
+            </summary>
+            <returns>A string that represents the current instance.</returns>
+        </member>
+        <member name="M:Geospatial.Angle.ToString(System.String,System.IFormatProvider)">
+            <summary>
+            Formats the value of the current instance using the specified format.
+            </summary>
+            <param name="format">
+            The format to use (see remarks) or null to use the default format.
+            </param>
+            <param name="formatProvider">
+            The provider to use to format the value or null to use the format
+            information from the current locale setting of the operating system.
+            </param>
+            <returns>
+            The value of the current instance in the specified format.
+            </returns>
+            <exception cref="T:System.ArgumentException">format is unknown.</exception>
+            <remarks>
+            Valid format strings are one of the following. Specifying a number
+            after the format string indicates the desired number of decimal
+            places to show. If the precision specifier is omitted, the current
+            NumberFormatInfo.NumberDecimalDigits will be used.
+            <list type="bullet">
+            <item><term>D</term><description>
+            Returns the angle in decimal degrees.
+            </description></item>
+            <item><term>DM</term><description>
+            Returns the angle in degrees and decimal minutes.
+            </description></item>
+            <item><term>DMS</term><description>
+            Returns the angle in degrees, minutes and decimal seconds. This
+            is the default format if no format is specified.
+            </description></item>
+            </list>
+            </remarks>
+        </member>
+        <member name="M:Geospatial.Angle.GetString(System.Double,System.Int32,System.Int32,System.IFormatProvider)">
+            <summary>
+            Turns a double value into a string using the specified number of
+            decimal digits.
+            </summary>
+            <param name="value">The value to format.</param>
+            <param name="digits">
+            The number of digits preceeding the decimal place.
+            </param>
+            <param name="decimals">The number of decimal digits to display.</param>
+            <param name="provider">
+            The provider to use to format the value or null to use the format
+            information from the current locale setting of the operating system.
+            </param>
+            <returns>A string representation of the value.</returns>
+        </member>
+        <member name="M:Geospatial.Angle.ParseFormatString(System.String)">
+            <summary>
+            Splits the format string into the format type and the precision to
+            format decimal numbers from the format string.
+            </summary>
+            <param name="format">The format string to parse.</param>
+            <returns>
+            A Tuple containing the format part of the input and the number of
+            decimal digits to display (-1 indicated the system default).
+            </returns>
+        </member>
+        <member name="M:Geospatial.Angle.ValidateRange(System.String,System.Double,System.Double,System.Double)">
+            <summary>
+            Validates a parameter and throws an ArgumentOutOfRangeException if
+            the value is outside the specified values.
+            </summary>
+            <param name="parameter">The name of the parameter to validate.</param>
+            <param name="value">The value to validate.</param>
+            <param name="min">
+            The minimum value the value must be greater than or equal to.
+            </param>
+            <param name="max">
+            The maximum value the value must be less than or equal to.
+            </param>
+        </member>
+        <member name="T:Geospatial.Location">
+            <summary>Represents a Latitude/Longitude/Altitude coordinate.</summary>
+            <summary>Represents a Latitude/Longitude/Altitude coordinate.</summary>
+        </member>
+        <member name="M:Geospatial.Location.#ctor(Geospatial.Latitude,Geospatial.Longitude)">
+            <summary>Initializes a new instance of the Location class.</summary>
+            <param name="latitude">The latitude of the coordinate.</param>
+            <param name="longitude">The longitude of the coordinate.</param>
+            <exception cref="T:System.ArgumentNullException">
+            latitude/longitude is null.
+            </exception>
+        </member>
+        <member name="M:Geospatial.Location.#ctor(Geospatial.Latitude,Geospatial.Longitude,System.Double)">
+            <summary>Initializes a new instance of the Location class.</summary>
+            <param name="latitude">The latitude of the coordinate.</param>
+            <param name="longitude">The longitude of the coordinate.</param>
+            <param name="altitude">
+            The altitude, specifed in meters, of the coordinate.
+            </param>
+            <exception cref="T:System.ArgumentNullException">
+            latitude/longitude is null.
+            </exception>
+        </member>
+        <member name="P:Geospatial.Location.Altitude">
+            <summary>
+            Gets the altitude of the coordinate, or null if the coordinate
+            does not contain altitude information.
+            </summary>
+        </member>
+        <member name="P:Geospatial.Location.Latitude">
+            <summary>Gets the latitude of the coordinate.</summary>
+        </member>
+        <member name="P:Geospatial.Location.Longitude">
+            <summary>Gets the longitude of the coordinate.</summary>
+        </member>
+        <member name="M:Geospatial.Location.Parse(System.String)">
+            <summary>Converts the string into a Location.</summary>
+            <param name="value">
+            A string containing a co-ordinate to convert.
+            </param>
+            <returns>
+            A Location that is equivalent to the value specified in value.
+            </returns>
+            <exception cref="T:System.ArgumentNullException">value is null.</exception>
+            <exception cref="T:System.FormatException">
+            value does not represent a valid co-ordinate.
+            </exception>
+        </member>
+        <member name="M:Geospatial.Location.Parse(System.String,System.IFormatProvider)">
+            <summary>Converts the string into a Location.</summary>
+            <param name="value">
+            A string containing a co-ordinate to convert.
+            </param>
+            <param name="provider">
+            An object that supplies culture-specific formatting information about
+            the input string.
+            </param>
+            <returns>
+            A Location that is equivalent to the value specified in value.
+            </returns>
+            <exception cref="T:System.ArgumentNullException">value is null.</exception>
+            <exception cref="T:System.FormatException">
+            value does not represent a valid co-ordinate.
+            </exception>
+        </member>
+        <member name="M:Geospatial.Location.Parse(System.String,Geospatial.LocationStyles,System.IFormatProvider)">
+            <summary>Converts the string into a Location.</summary>
+            <param name="value">
+            A string containing a co-ordinate to convert.
+            </param>
+            <param name="style">
+            A combination of allowable styles that value can be formatted to.
+            </param>
+            <param name="provider">
+            An object that supplies culture-specific formatting information about
+            the input string.
+            </param>
+            <returns>
+            A Location that is equivalent to the value specified in value.
+            </returns>
+            <exception cref="T:System.ArgumentNullException">value is null.</exception>
+            <exception cref="T:System.FormatException">
+            value does not represent a valid co-ordinate.
+            </exception>
+        </member>
+        <member name="M:Geospatial.Location.TryParse(System.String,Geospatial.Location@)">
+            <summary>Converts the string into a Location.</summary>
+            <param name="value">
+            A string containing a co-ordinate to convert.
+            </param>
+            <param name="location">
+            Contains the converted value, if the conversion succeeded, or null
+            if the conversion failed. This parameter is passed uninitialized.
+            </param>
+            <returns>
+            true if the value was converted successfully; otherwise, false.
+            </returns>
+        </member>
+        <member name="M:Geospatial.Location.TryParse(System.String,System.IFormatProvider,Geospatial.Location@)">
+            <summary>Converts the string into a Location.</summary>
+            <param name="value">
+            A string containing a co-ordinate to convert.
+            </param>
+            <param name="provider">
+            An object that supplies culture-specific formatting information about
+            the input string.
+            </param>
+            <param name="location">
+            Contains the converted value, if the conversion succeeded, or null
+            if the conversion failed. This parameter is passed uninitialized.
+            </param>
+            <returns>
+            true if the value was converted successfully; otherwise, false.
+            </returns>
+        </member>
+        <member name="M:Geospatial.Location.TryParse(System.String,Geospatial.LocationStyles,System.IFormatProvider,Geospatial.Location@)">
+            <summary>Converts the string into a Location.</summary>
+            <param name="value">
+            A string containing a co-ordinate to convert.
+            </param>
+            <param name="style">
+            A combination of allowable styles that value can be formatted to.
+            </param>
+            <param name="provider">
+            An object that supplies culture-specific formatting information about
+            the input string.
+            </param>
+            <param name="location">
+            Contains the converted value, if the conversion succeeded, or null
+            if the conversion failed. This parameter is passed uninitialized.
+            </param>
+            <returns>
+            true if the value was converted successfully; otherwise, false.
+            </returns>
+        </member>
+        <member name="M:Geospatial.Location.op_Inequality(Geospatial.Location,Geospatial.Location)">
+            <summary>
+            Determines whether two specified Locations have different values.
+            </summary>
+            <param name="locationA">The first Location to compare, or null.</param>
+            <param name="locationB">The second Location to compare, or null.</param>
+            <returns>
+            true if the value of locationA is different from the value of
+            locationB; otherwise, false.
+            </returns>
+        </member>
+        <member name="M:Geospatial.Location.op_Equality(Geospatial.Location,Geospatial.Location)">
+            <summary>
+            Determines whether two specified Locations have the same value.
+            </summary>
+            <param name="locationA">The first Location to compare, or null.</param>
+            <param name="locationB">The second Location to compare, or null.</param>
+            <returns>
+            true if the value of locationA is the same as the value of locationB;
+            otherwise, false.
+            </returns>
+        </member>
+        <member name="M:Geospatial.Location.Equals(System.Object)">
+            <summary>
+            Determines whether this instance and a specified object, which must
+            also be a Location, have the same value.
+            </summary>
+            <param name="obj">The Location to compare to this instance.</param>
+            <returns>
+            true if obj is a Location and its value is the same as this instance;
+            otherwise, false.
+            </returns>
+        </member>
+        <member name="M:Geospatial.Location.Equals(Geospatial.Location)">
+            <summary>
+            Determines whether this instance and another specified Location object
+            have the same value.
+            </summary>
+            <param name="other">The Location to compare to this instance.</param>
+            <returns>
+            true if the value of the value parameter is the same as this instance;
+            otherwise, false.
+            </returns>
+        </member>
+        <member name="M:Geospatial.Location.GetHashCode">
+            <summary>Returns the hash code for this instance.</summary>
+            <returns>A 32-bit signed integer hash code.</returns>
+        </member>
+        <member name="M:Geospatial.Location.ToString">
+            <summary>
+            Returns a string that represents the current Location in degrees,
+            minutes and seconds form.
+            </summary>
+            <returns>A string that represents the current instance.</returns>
+        </member>
+        <member name="M:Geospatial.Location.ToString(System.String,System.IFormatProvider)">
+            <summary>
+            Formats the value of the current instance using the specified format.
+            </summary>
+            <param name="format">
+            The format to use or null to use the default format (see
+            <see cref="M:Geospatial.Angle.ToString(System.String,System.IFormatProvider)"/>).
+            </param>
+            <param name="formatProvider">
+            The provider to use to format the value or null to use the format
+            information from the current locale setting of the operating system.
+            </param>
+            <returns>
+            The value of the current instance in the specified format.
+            </returns>
+            <exception cref="T:System.ArgumentException">format is unknown.</exception>
+        </member>
+        <member name="M:Geospatial.Location.System#Xml#Serialization#IXmlSerializable#GetSchema">
+            <summary>This method is reserved and should not be used.</summary>
+            <returns>This method always returns null.</returns>
+            <remarks>
+            The IXmlSerializable interface documentation specifies that this
+            method should always return null.
+            </remarks>
+        </member>
+        <member name="M:Geospatial.Location.System#Xml#Serialization#IXmlSerializable#ReadXml(System.Xml.XmlReader)">
+            <summary>Generates an object from its XML representation.</summary>
+            <param name="reader">
+            The XmlReader stream from which the object is deserialized.
+            </param>
+        </member>
+        <member name="M:Geospatial.Location.System#Xml#Serialization#IXmlSerializable#WriteXml(System.Xml.XmlWriter)">
+            <summary>Converts an object into its XML representation.</summary>
+            <param name="writer">
+            The XmlWriter stream to which the object is serialized.
+            </param>
+        </member>
+        <member name="M:Geospatial.Location.Course(Geospatial.Location)">
+            <summary>
+            Calculates the initial course (or azimuth; the angle measured
+            clockwise from true north) from this instance to the specified
+            value.
+            </summary>
+            <param name="point">The location of the other point.</param>
+            <returns>
+            The initial course from this instance to the specified point.
+            </returns>
+            <example>
+            The azimuth from 0,0 to 1,0 is 0 degrees. From 0,0 to 0,1 is 90
+            degrees (due east).
+            </example>
+        </member>
+        <member name="M:Geospatial.Location.Distance(Geospatial.Location)">
+            <summary>
+            Calculates the great circle distance, in meters, between this instance
+            and the specified value.
+            </summary>
+            <param name="point">The location of the other point.</param>
+            <returns>The great circle distance, in meters.</returns>
+            <remarks>The antemeridian is not considered.</remarks>
+            <exception cref="T:System.ArgumentNullException">point is null.</exception>
+        </member>
+        <member name="M:Geospatial.Location.GetPoint(System.Double,Geospatial.Angle)">
+            <summary>
+            Calculates a point at the specified distance along the specified
+            radial from this instance.
+            </summary>
+            <param name="distance">The distance, in meters.</param>
+            <param name="radial">
+            The course radial from this instance, measured clockwise from north.
+            </param>
+            <returns>A Location containing the calculated point.</returns>
+            <exception cref="T:System.ArgumentNullException">radial is null.</exception>
+            <remarks>The antemeridian is not considered.</remarks>
+        </member>
+        <member name="T:Geospatial.Location.Parser">
+            <summary>Allows parsing of strings.</summary>
+        </member>
+        <member name="M:Geospatial.Location.Parser.ParseDegrees(System.String,System.IFormatProvider)">
+            <summary>
+            Parses the input string for a value containg a pair of degree
+            values.
+            </summary>
+            <param name="value">The input to parse.</param>
+            <param name="provider">
+            The culture-specific formatting information to use when parsing.
+            </param>
+            <returns>
+            A Location representing the string on success; otherwise, null.
+            </returns>
+        </member>
+        <member name="M:Geospatial.Location.Parser.ParseDegreesMinutes(System.String,System.IFormatProvider)">
+            <summary>
+            Parses the input string for a value containg a pair of degree
+            minute values.
+            </summary>
+            <param name="value">The input to parse.</param>
+            <param name="provider">
+            The culture-specific formatting information to use when parsing.
+            </param>
+            <returns>
+            A Location representing the string on success; otherwise, null.
+            </returns>
+        </member>
+        <member name="M:Geospatial.Location.Parser.ParseDegreesMinutesSeconds(System.String,System.IFormatProvider)">
+            <summary>
+            Parses the input string for a value containg a pair of degree
+            minute second values.
+            </summary>
+            <param name="value">The input to parse.</param>
+            <param name="provider">
+            The culture-specific formatting information to use when parsing.
+            </param>
+            <returns>
+            A Location representing the string on success; otherwise, null.
+            </returns>
+        </member>
+        <member name="M:Geospatial.Location.Parser.ParseIso(System.String)">
+            <summary>
+            Parses the specified input string for an ISO 6709 formatted
+            coordinate from a string.
+            </summary>
+            <param name="value">The input to parse.</param>
+            <returns>
+            A Location representing the string on success; otherwise, null.
+            </returns>
+        </member>
+        <member name="T:Geospatial.LocationCollection">
+            <summary>
+            Represents a collection of Locations and allows their serialization and
+            deserialization from XML.
+            </summary>
+        </member>
+        <member name="P:Geospatial.LocationCollection.Count">
+            <summary>
+            Gets the number of Locations contained in this instance.
+            </summary>
+        </member>
+        <member name="P:Geospatial.LocationCollection.System#Collections#Generic#ICollection{Geospatial#Location}#IsReadOnly">
+            <summary>
+            Gets a value indicating whether this instance is read-only.
+            </summary>
+        </member>
+        <member name="M:Geospatial.LocationCollection.Add(Geospatial.Location)">
+            <summary>Adds a Location to this instance.</summary>
+            <param name="item">The Location to be added.</param>
+            <exception cref="T:System.ArgumentNullException">item is null.</exception>
+        </member>
+        <member name="M:Geospatial.LocationCollection.Clear">
+            <summary>Removes all Locations from this instance.</summary>
+        </member>
+        <member name="M:Geospatial.LocationCollection.Contains(Geospatial.Location)">
+            <summary>
+            Determines whether a specified Location is contained in this instance.
+            </summary>
+            <param name="item">The Location to locate.</param>
+            <returns>
+            true if item is found in this instance; otherwise, false. This
+            method also returns false if the specified value parameter is null.
+            </returns>
+        </member>
+        <member name="M:Geospatial.LocationCollection.CopyTo(Geospatial.Location[],System.Int32)">
+            <summary>
+            Copies this instance to a compatible one-dimensional array, starting
+            at the specified index of the target array.
+            </summary>
+            <param name="array">The destination one-dimensional array.</param>
+            <param name="arrayIndex">
+            The zero-based index in array at which copying begins.
+            </param>
+            <exception cref="T:System.ArgumentException">
+            The number of Locations contained in this instance is greater than the
+            available space from arrayIndex to the end of the destination array.
+            </exception>
+            <exception cref="T:System.ArgumentNullException">array is null.</exception>
+            <exception cref="T:System.ArgumentOutOfRangeException">
+            arrayIndex is less than 0.
+            </exception>
+        </member>
+        <member name="M:Geospatial.LocationCollection.GetEnumerator">
+            <summary>
+            Returns an enumerator that iterates through this instance.
+            </summary>
+            <returns>An enumerator for this instance.</returns>
+        </member>
+        <member name="M:Geospatial.LocationCollection.System#Collections#IEnumerable#GetEnumerator">
+            <summary>
+            Returns an enumerator that iterates through this instance.
+            </summary>
+            <returns>An enumerator for this instance.</returns>
+        </member>
+        <member name="M:Geospatial.LocationCollection.Remove(Geospatial.Location)">
+            <summary>
+            Removes the first occurrence of a specific Location from this instance.
+            </summary>
+            <param name="item">The Location to remove.</param>
+            <returns>
+            true if the specified value parameter is successfully removed;
+            otherwise, false. This method also returns false if the specified
+            value parameter was not found or is null.
+            </returns>
+        </member>
+        <member name="M:Geospatial.LocationCollection.System#Xml#Serialization#IXmlSerializable#GetSchema">
+            <summary>This method is reserved and should not be used.</summary>
+            <returns>This method always returns null.</returns>
+            <remarks>
+            The IXmlSerializable interface documentation specifies that this
+            method should always return null.
+            </remarks>
+        </member>
+        <member name="M:Geospatial.LocationCollection.System#Xml#Serialization#IXmlSerializable#ReadXml(System.Xml.XmlReader)">
+            <summary>Generates an object from its XML representation.</summary>
+            <param name="reader">
+            The XmlReader stream from which the object is deserialized.
+            </param>
+        </member>
+        <member name="M:Geospatial.LocationCollection.System#Xml#Serialization#IXmlSerializable#WriteXml(System.Xml.XmlWriter)">
+            <summary>Converts an object into its XML representation.</summary>
+            <param name="writer">
+            The XmlWriter stream to which the object is serialized.
+            </param>
+        </member>
+        <member name="T:Geospatial.LocationStyles">
+            <summary>
+            Determines the styles permitted in string arguments that are passed
+            to the Parse/TryParse methods of Location.
+            </summary>
+        </member>
+        <member name="F:Geospatial.LocationStyles.None">
+            <summary>
+            Default formatting optiona are used. Indicates that the Degrees,
+            DegreesMinutes and DegreeMinuteSeconds styles are used.
+            </summary>
+        </member>
+        <member name="F:Geospatial.LocationStyles.Degrees">
+            <summary>Allows parsing of degree values only.</summary>
+        </member>
+        <member name="F:Geospatial.LocationStyles.DegreesMinutes">
+            <summary>
+            Allows parsing of values that contain both degrees and minutes.
+            </summary>
+        </member>
+        <member name="F:Geospatial.LocationStyles.DegreesMinutesSeconds">
+            <summary>
+            Allows parsing of values that contain degrees, minutes and seconds.
+            </summary>
+        </member>
+        <member name="F:Geospatial.LocationStyles.Iso">
+            <summary>
+            Allows parsing of values formmated to ISO 6709.
+            </summary>
+        </member>
+        <member name="F:Geospatial.LocationStyles.Any">
+            <summary>
+            Indicates that the Degrees, DegreesMinutes, DegreeMinuteSeconds
+            and Iso styles are used.
+            </summary>
+        </member>
+        <member name="T:Geospatial.Longitude">
+            <summary>Represents a longitude ("x" axis) co-ordinate.</summary>
+        </member>
+        <member name="M:Geospatial.Longitude.#ctor(Geospatial.Angle)">
+            <summary>Initializes a new instance of the Longitude class.</summary>
+            <param name="angle">The angle of the longitude.</param>
+            <exception cref="T:System.ArgumentNullException">angle is null.</exception>
+            <exception cref="T:System.ArgumentOutOfRangeException">
+            angle is greater than 180 degrees or less than -180 degrees.
+            </exception>
+        </member>
+        <member name="P:Geospatial.Longitude.Direction">
+            <summary>
+            Gets a value indicating whether this instance represents am east or
+            west longitude.
+            </summary>
+        </member>
+        <member name="M:Geospatial.Longitude.FromDegrees(System.Double)">
+            <summary>Creates a new Longitude from an angle in degrees.</summary>
+            <param name="degrees">The angle of the longitude in degrees.</param>
+            <returns>A new Longitude representing the specified value.</returns>
+            <exception cref="T:System.ArgumentOutOfRangeException">
+            degrees is greater than 180 or less than -180.
+            </exception>
+        </member>
+        <member name="M:Geospatial.Longitude.FromDegrees(System.Double,System.Double)">
+            <summary>
+            Creates a new Longitude from an angle in degrees and minutes.
+            </summary>
+            <param name="degrees">The amount of degrees.</param>
+            <param name="minutes">The amount of minutes.</param>
+            <returns>A new Longitude representing the specified value.</returns>
+            <exception cref="T:System.ArgumentOutOfRangeException">
+            The specified angle (degrees + minutes) is greater than 180 or less
+            than -180.
+            </exception>
+        </member>
+        <member name="M:Geospatial.Longitude.FromDegrees(System.Double,System.Double,System.Double)">
+            <summary>
+            Creates a new Longitude from an angle in degrees, minutes and seconds.
+            </summary>
+            <param name="degrees">The amount of degrees.</param>
+            <param name="minutes">The amount of minutes.</param>
+            <param name="seconds">The amount of seconds.</param>
+            <returns>A new Longitude representing the specified value.</returns>
+            <exception cref="T:System.ArgumentOutOfRangeException">
+            The specified angle (degrees + minutes + seconds) is greater than
+            180 or less than -180.
+            </exception>
+        </member>
+        <member name="M:Geospatial.Longitude.FromRadians(System.Double)">
+            <summary>Creates a new Longitude from an amount in radians.</summary>
+            <param name="radians">The angle of the longitude in radians.</param>
+            <returns>A new Longitude representing the specified value.</returns>
+            <exception cref="T:System.ArgumentOutOfRangeException">
+            radians is greater than PI or less than -PI.
+            </exception>
+        </member>
+        <member name="M:Geospatial.Longitude.ToString(System.String,System.IFormatProvider)">
+            <summary>
+            Formats the value of the current instance using the specified format.
+            </summary>
+            <param name="format">
+            The format to use (see remarks) or null to use the default format.
+            </param>
+            <param name="formatProvider">
+            The provider to use to format the value or null to use the format
+            information from the current locale setting of the operating system.
+            </param>
+            <returns>
+            The value of the current instance in the specified format.
+            </returns>
+            <exception cref="T:System.ArgumentException">format is unknown.</exception>
+            <remarks>
+            Valid format strings are those for
+            <see cref="M:Geospatial.Angle.ToString(System.String,System.IFormatProvider)"/> plus "ISO"
+            (without any precision specifier), which returns the angle in
+            ISO 6709 compatible format.
+            </remarks>
+        </member>
+        <member name="T:Geospatial.Latitude">
+            <summary>Represents a latitude ("y" axis) co-ordinate.</summary>
+        </member>
+        <member name="M:Geospatial.Latitude.#ctor(Geospatial.Angle)">
+            <summary>Initializes a new instance of the Latitude class.</summary>
+            <param name="angle">The angle of the latitude.</param>
+            <exception cref="T:System.ArgumentNullException">angle is null.</exception>
+            <exception cref="T:System.ArgumentOutOfRangeException">
+            angle is greater than 90 degrees or less than -90 degrees.
+            </exception>
+        </member>
+        <member name="P:Geospatial.Latitude.Direction">
+            <summary>
+            Gets a value indicating whether this instance represents a north or
+            south latitude.
+            </summary>
+        </member>
+        <member name="M:Geospatial.Latitude.FromDegrees(System.Double)">
+            <summary>Creates a new Latitude from an angle in degrees.</summary>
+            <param name="degrees">The angle of the latitude in degrees.</param>
+            <returns>A new Latitude representing the specified value.</returns>
+            <exception cref="T:System.ArgumentOutOfRangeException">
+            degrees is greater than 90 or less than -90.
+            </exception>
+        </member>
+        <member name="M:Geospatial.Latitude.FromDegrees(System.Double,System.Double)">
+            <summary>
+            Creates a new Latitude from an angle in degrees and minutes.
+            </summary>
+            <param name="degrees">The amount of degrees.</param>
+            <param name="minutes">The amount of minutes.</param>
+            <returns>A new Latitude representing the specified value.</returns>
+            <exception cref="T:System.ArgumentOutOfRangeException">
+            The specified angle (degrees + minutes) is greater than 90 or less
+            than -90.
+            </exception>
+        </member>
+        <member name="M:Geospatial.Latitude.FromDegrees(System.Double,System.Double,System.Double)">
+            <summary>
+            Creates a new Latitude from an angle in degrees, minutes and seconds.
+            </summary>
+            <param name="degrees">The amount of degrees.</param>
+            <param name="minutes">The amount of minutes.</param>
+            <param name="seconds">The amount of seconds.</param>
+            <returns>A new Latitude representing the specified value.</returns>
+            <exception cref="T:System.ArgumentOutOfRangeException">
+            The specified angle (degrees + minutes + seconds) is greater than
+            90 or less than -90.
+            </exception>
+        </member>
+        <member name="M:Geospatial.Latitude.FromRadians(System.Double)">
+            <summary>Creates a new Latitude from an amount in radians.</summary>
+            <param name="radians">The angle of the latitude in radians.</param>
+            <returns>A new Latitude representing the specified value.</returns>
+            <exception cref="T:System.ArgumentOutOfRangeException">
+            radians is greater than PI/2 or less than -PI/2.
+            </exception>
+        </member>
+        <member name="M:Geospatial.Latitude.ToString(System.String,System.IFormatProvider)">
+            <summary>
+            Formats the value of the current instance using the specified format.
+            </summary>
+            <param name="format">
+            The format to use (see remarks) or null to use the default format.
+            </param>
+            <param name="formatProvider">
+            The provider to use to format the value or null to use the format
+            information from the current locale setting of the operating system.
+            </param>
+            <returns>
+            The value of the current instance in the specified format.
+            </returns>
+            <exception cref="T:System.ArgumentException">format is unknown.</exception>
+            <remarks>
+            Valid format strings are those for
+            <see cref="M:Geospatial.Angle.ToString(System.String,System.IFormatProvider)"/> plus "ISO"
+            (without any precision specifier), which returns the angle in
+            ISO 6709 compatible format.
+            </remarks>
+        </member>
+    </members>
+</doc>

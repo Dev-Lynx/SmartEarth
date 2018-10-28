@@ -1,0 +1,391 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{8F2AF7EB-36CF-483E-A031-161478A72A2B}</ProjectGuid>
+    <OutputType>library</OutputType>
+    <RootNamespace>SmartEarth.Common.Infrastructure</RootNamespace>
+    <AssemblyName>SmartEarth.Common.Infrastructure</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="AsyncEnumeration">
+      <HintPath>..\..\..\Dependencies\AsyncEnumeration\AsyncEnumeration.dll</HintPath>
+    </Reference>
+    <Reference Include="Castle.Core, Version=3.3.0.0, Culture=neutral, PublicKeyToken=407dd0808d44fbdc, processorArchitecture=MSIL">
+      <HintPath>..\packages\Castle.Core.3.3.0\lib\net45\Castle.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="CoordinateSharp, Version=1.1.3.8, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\CoordinateSharp.1.1.3.8\lib\net40\CoordinateSharp.dll</HintPath>
+    </Reference>
+    <Reference Include="Ionic.Zip.Reduced, Version=1.9.1.8, Culture=neutral, PublicKeyToken=edbe51ad942a3f5c, processorArchitecture=MSIL">
+      <HintPath>..\packages\DotNetZip.Reduced.1.9.1.8\lib\net20\Ionic.Zip.Reduced.dll</HintPath>
+    </Reference>
+    <Reference Include="LiteDB, Version=4.1.4.0, Culture=neutral, PublicKeyToken=4ee40123013c9f27, processorArchitecture=MSIL">
+      <HintPath>..\packages\LiteDB.4.1.4\lib\net40\LiteDB.dll</HintPath>
+    </Reference>
+    <Reference Include="MaterialDesignColors, Version=1.1.2.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\MaterialDesignColors.1.1.2\lib\net45\MaterialDesignColors.dll</HintPath>
+    </Reference>
+    <Reference Include="MaterialDesignThemes.Wpf, Version=2.4.1.1101, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\MaterialDesignThemes.2.4.1.1101\lib\net45\MaterialDesignThemes.Wpf.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.ServiceLocation, Version=1.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\CommonServiceLocator.1.3\lib\portable-net4+sl5+netcore45+wpa81+wp8\Microsoft.Practices.ServiceLocation.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.Unity, Version=4.0.0.0, Culture=neutral, PublicKeyToken=6d32ff45e0ccc69f, processorArchitecture=MSIL">
+      <HintPath>..\packages\Unity.4.0.1\lib\net45\Microsoft.Practices.Unity.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.Unity.Configuration, Version=4.0.0.0, Culture=neutral, PublicKeyToken=6d32ff45e0ccc69f, processorArchitecture=MSIL">
+      <HintPath>..\packages\Unity.4.0.1\lib\net45\Microsoft.Practices.Unity.Configuration.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.Unity.RegistrationByConvention, Version=4.0.0.0, Culture=neutral, PublicKeyToken=6d32ff45e0ccc69f, processorArchitecture=MSIL">
+      <HintPath>..\packages\Unity.4.0.1\lib\net45\Microsoft.Practices.Unity.RegistrationByConvention.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Windows.Shell, Version=3.5.41019.1, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="Newtonsoft.Json, Version=11.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.11.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="NLog, Version=4.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c, processorArchitecture=MSIL">
+      <HintPath>..\packages\NLog.4.5.8\lib\net45\NLog.dll</HintPath>
+    </Reference>
+    <Reference Include="Npgsql, Version=4.0.2.0, Culture=neutral, PublicKeyToken=5d8b90d52f46fda7, processorArchitecture=MSIL">
+      <HintPath>..\packages\Npgsql.4.0.2\lib\net451\Npgsql.dll</HintPath>
+    </Reference>
+    <Reference Include="PresentationFramework.Classic" />
+    <Reference Include="Prism, Version=6.3.0.0, Culture=neutral, PublicKeyToken=40ee6c3a2184dc59, processorArchitecture=MSIL">
+      <HintPath>..\packages\Prism.Core.6.3.0\lib\net45\Prism.dll</HintPath>
+    </Reference>
+    <Reference Include="Prism.Unity.Wpf, Version=6.3.0.0, Culture=neutral, PublicKeyToken=40ee6c3a2184dc59, processorArchitecture=MSIL">
+      <HintPath>..\packages\Prism.Unity.6.3.0\lib\net45\Prism.Unity.Wpf.dll</HintPath>
+    </Reference>
+    <Reference Include="Prism.Wpf, Version=6.3.0.0, Culture=neutral, PublicKeyToken=40ee6c3a2184dc59, processorArchitecture=MSIL">
+      <HintPath>..\packages\Prism.Wpf.6.3.0\lib\net45\Prism.Wpf.dll</HintPath>
+    </Reference>
+    <Reference Include="Quartz, Version=3.0.6.0, Culture=neutral, PublicKeyToken=f6b8c98a402cc8a4, processorArchitecture=MSIL">
+      <HintPath>..\packages\Quartz.3.0.6\lib\net452\Quartz.dll</HintPath>
+    </Reference>
+    <Reference Include="RibbonControlsLibrary, Version=4.0.0.11019, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\Dependencies\Microsoft Ribbon For WPF\V4.0\RibbonControlsLibrary.dll</HintPath>
+    </Reference>
+    <Reference Include="SharpKml.Core, Version=3.4.0.0, Culture=neutral, PublicKeyToken=9bb853c026a5c0ac, processorArchitecture=MSIL">
+      <HintPath>..\packages\SharpKml.Core.3.4.0\lib\net45\SharpKml.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.IO.Compression" />
+    <Reference Include="System.Runtime.CompilerServices.Unsafe, Version=4.0.4.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Runtime.CompilerServices.Unsafe.4.5.0\lib\netstandard2.0\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.Remoting" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Threading.Tasks.Extensions, Version=4.2.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Threading.Tasks.Extensions.4.5.0\lib\netstandard2.0\System.Threading.Tasks.Extensions.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Transactions" />
+    <Reference Include="System.ValueTuple, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.ValueTuple.4.5.0\lib\net461\System.ValueTuple.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Windows.Interactivity, Version=4.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Prism.Wpf.6.3.0\lib\net45\System.Windows.Interactivity.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xaml">
+      <RequiredTargetFramework>4.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="TestStack.White, Version=0.13.0.0, Culture=neutral, PublicKeyToken=2672efbf3e161801, processorArchitecture=MSIL">
+      <HintPath>..\packages\TestStack.White.0.13.3\lib\net40\TestStack.White.dll</HintPath>
+    </Reference>
+    <Reference Include="Transitionals, Version=1.2.0.0, Culture=neutral, PublicKeyToken=4747a3d6bcb35c80, processorArchitecture=MSIL">
+      <HintPath>..\packages\WPFTransitionals.1.0.0\lib\net35\Transitionals.dll</HintPath>
+    </Reference>
+    <Reference Include="WindowsBase" />
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+    <Reference Include="WindowsInput, Version=1.0.4.0, Culture=neutral, PublicKeyToken=9b287f7dc5073cad, processorArchitecture=MSIL">
+      <HintPath>..\packages\InputSimulator.1.0.4.0\lib\net20\WindowsInput.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Core.cs" />
+    <Compile Include="Enums.cs" />
+    <Compile Include="Extensions\InputManager.cs" />
+    <Compile Include="Extensions\LinqToVisualTree.cs" />
+    <Compile Include="Extensions\LoggerExtensions.cs" />
+    <Compile Include="Extensions\UIHelper.cs" />
+    <Compile Include="Extensions\Utilities.cs" />
+    <Compile Include="Extensions\Win32Manager.cs" />
+    <Compile Include="Models\Angle.cs" />
+    <Compile Include="Resources\Collections\AsyncObservableCollection.cs" />
+    <Compile Include="Models\Calender.cs" />
+    <Compile Include="Models\CheckableWeekday.cs" />
+    <Compile Include="Models\ColorBox.cs" />
+    <Compile Include="Models\Configuration.cs" />
+    <Compile Include="Models\Day.cs" />
+    <Compile Include="Models\GEAutomationTask.cs" />
+    <Compile Include="Models\BindableModel.cs" />
+    <Compile Include="Models\Hour.cs" />
+    <Compile Include="Models\Interfaces\IPresentable.cs" />
+    <Compile Include="Models\ScheduleTask.cs" />
+    <Compile Include="Resources\Collections\AsyncSortableObservableCollection.cs" />
+    <Compile Include="Resources\Collections\AsyncSuppressedObservableCollection.cs" />
+    <Compile Include="Resources\Collections\SuppressedObservableCollection.cs" />
+    <Compile Include="Resources\Collections\TimeElementCollection.cs" />
+    <Compile Include="Resources\Commands\AwaitableDelegateCommand.cs" />
+    <Compile Include="Resources\Converters\AngleToStringConverter.cs" />
+    <Compile Include="Resources\Converters\CaseConverter.cs" />
+    <Compile Include="Resources\Converters\InverseBoolConverter.cs" />
+    <Compile Include="Resources\Converters\MathConverter.cs" />
+    <Compile Include="Resources\Interfaces\IAsyncCommand.cs" />
+    <Compile Include="Resources\Interfaces\ICalender.cs" />
+    <Compile Include="Resources\Interfaces\IRaiseCanExecuteChanged.cs" />
+    <Compile Include="Models\Interfaces\IViewable.cs" />
+    <Compile Include="Models\Interfaces\IWaitable.cs" />
+    <Compile Include="Models\KeyCombination.cs" />
+    <Compile Include="Models\Location.cs" />
+    <Compile Include="Models\Log.cs" />
+    <Compile Include="Models\Month.cs" />
+    <Compile Include="Models\RepeatInterval.cs" />
+    <Compile Include="Models\SmartEarthImage.cs" />
+    <Compile Include="Models\SmartEarthTask.cs" />
+    <Compile Include="Resources\Collections\StringCollection.cs" />
+    <Compile Include="Models\TimeElement.cs" />
+    <Compile Include="Models\WindowCreationSettings.cs" />
+    <Compile Include="Models\Year.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="Resources\Attachments\ScrollViewerAttachments.cs" />
+    <Compile Include="Resources\Behaviors\ClickBehavior.cs" />
+    <Compile Include="Resources\Behaviors\ProgresBarAnimateBehavior.cs" />
+    <Compile Include="Resources\Controls\NoMouseWheelScrollViewer.cs" />
+    <Compile Include="Resources\Controls\SmartEarthRibbon.cs" />
+    <Compile Include="Resources\Controls\SmartEarthRibbonTab.cs" />
+    <Compile Include="Resources\Controls\SmartEarthScrollViewer.cs" />
+    <Compile Include="Resources\Controls\SmartEarthWindow.xaml.cs">
+      <DependentUpon>SmartEarthWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Resources\Converters\BooleanAndConverter.cs" />
+    <Compile Include="Resources\Converters\BooleanAndToVisibilityConverter.cs" />
+    <Compile Include="Resources\Converters\HalfConverter.cs" />
+    <Compile Include="Resources\Converters\InverseBoolToVisibilityConverter.cs" />
+    <Compile Include="Resources\Converters\InvisibleWhenZeroConverter.cs" />
+    <Compile Include="Resources\Converters\LengthToThicknessConverter.cs" />
+    <Compile Include="Resources\Converters\MultiplyConverter.cs" />
+    <Compile Include="Resources\Converters\PercentageToRatioConverter.cs" />
+    <Compile Include="Resources\Converters\VisibleWhenZeroConverter.cs" />
+    <Compile Include="Resources\Interfaces\INavigationTab.cs" />
+    <Compile Include="Resources\Interfaces\IShell.cs" />
+    <Compile Include="Resources\Interfaces\IShellAware.cs" />
+    <Compile Include="Resources\Interfaces\IView.cs" />
+    <Compile Include="Resources\Interfaces\IViewAware.cs" />
+    <Compile Include="Resources\Interfaces\IWindow.cs" />
+    <Compile Include="Resources\TemplateSelectors\InterfaceTemplateSelector.cs" />
+    <Compile Include="Services\Interfaces\IViewManager.cs" />
+    <Compile Include="Services\Interfaces\IWindowService.cs" />
+    <Compile Include="Services\MaterialTransitionRegionAdapter.cs" />
+    <Compile Include="Services\SmartEarthRegionManager.cs" />
+    <Compile Include="Services\TransitionElementRegionAdapter.cs" />
+    <Compile Include="Services\ViewManager.cs" />
+    <Compile Include="Services\WindowService.cs" />
+    <Compile Include="Services\XMLConfigurationManager.cs" />
+    <Compile Include="Services\ConsoleManager.cs" />
+    <Compile Include="Services\Interfaces\IConfigurationManager.cs" />
+    <Compile Include="Services\Interfaces\IDatabaseManager.cs" />
+    <Compile Include="Services\Interfaces\IScheduler.cs" />
+    <Compile Include="Models\Interfaces\ITask.cs" />
+    <Compile Include="Services\Interfaces\ITaskManager.cs" />
+    <Compile Include="Services\LiteDatabaseManager.cs" />
+    <Compile Include="Services\NLogger.cs" />
+    <Compile Include="Services\PostgreSQLDatabaseManager.cs" />
+    <Compile Include="Services\QuartzSheduler.cs" />
+    <Compile Include="Services\TaskManager.cs" />
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Image Sets\Default\Images\Left Arrow.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Page Include="Resources\Base.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Resources\Common.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Resources\Controls.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Resources\Controls\SmartEarthWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Resources\Image Sets\Default\Images.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Resources\Languages\English US\Dictionary.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Resources\Material.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Resources\Skins\Sky\Base.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Resources\Skins\Sky\Controls.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Resources\Skins\Sky\Material.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Resources\Skins\Sky\Skin.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Image Sets\Default\Images\Document_16x16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Image Sets\Default\Images\Play Icon x32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Image Sets\Default\Images\Play Icon x16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Image Sets\Default\Images\Schedule Icon x32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Image Sets\Default\Images\Right Arrow.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Image Sets\Default\Images\Schedule Icon x16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Image Sets\Default\Images\Add Icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Image Sets\Default\Images\Color Wheel.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Image Sets\Default\Images\No Image available.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Image Sets\Default\Images\Back Icon.png" />
+    <Resource Include="Resources\Image Sets\Default\Images\Forward Icon.png" />
+    <Resource Include="Resources\Image Sets\Default\Images\Stop Icon x16.png" />
+    <Resource Include="Resources\Image Sets\Default\Images\Stop Icon x32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Image Sets\Default\Images\White Earth Globe.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Image Sets\Default\Images\Earth globe x32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Image Sets\Default\Images\Earth globe.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Image Sets\Default\Images\Check Icon x16.png" />
+    <Resource Include="Resources\Image Sets\Default\Images\Check Icon x32.png" />
+    <Resource Include="Resources\Image Sets\Default\Images\Close Icon x16.png" />
+    <Resource Include="Resources\Image Sets\Default\Images\Close Icon x32.png" />
+    <Resource Include="Resources\Image Sets\Default\Images\Close Icon.png" />
+    <Resource Include="Resources\Image Sets\Default\Images\Information Icon x16.png" />
+    <Resource Include="Resources\Image Sets\Default\Images\Information Icon x32.png" />
+    <Resource Include="Resources\Image Sets\Default\Images\Maximize Icon.png" />
+    <Resource Include="Resources\Image Sets\Default\Images\Minimize Icon.png" />
+    <Resource Include="Resources\Image Sets\Default\Images\New Task Icon x16.png" />
+    <Resource Include="Resources\Image Sets\Default\Images\New Task Icon x32.png" />
+    <Resource Include="Resources\Image Sets\Default\Images\Open In Icon x16.png" />
+    <Resource Include="Resources\Image Sets\Default\Images\Open In Icon x32.png" />
+    <Resource Include="Resources\Image Sets\Default\Images\Resize Icon x16.png" />
+    <Resource Include="Resources\Image Sets\Default\Images\Resize Icon x32.png" />
+    <Resource Include="Resources\Image Sets\Default\Images\Restore Icon.png" />
+    <Resource Include="Resources\Image Sets\Default\Images\Rotate Left Icon x16.png" />
+    <Resource Include="Resources\Image Sets\Default\Images\Rotate Left Icon x32.png" />
+    <Resource Include="Resources\Image Sets\Default\Images\Rotate Right Icon x16.png" />
+    <Resource Include="Resources\Image Sets\Default\Images\Rotate Right Icon x32.png" />
+    <Resource Include="Resources\Image Sets\Default\Images\Schedule Check Icon x16.png" />
+    <Resource Include="Resources\Image Sets\Default\Images\Schedule Check Icon x32.png" />
+    <Resource Include="Resources\Image Sets\Default\Images\Schedule Pending Icon x16.png" />
+    <Resource Include="Resources\Image Sets\Default\Images\Schedule Pending Icon x32.png" />
+    <Resource Include="Resources\Image Sets\Default\Images\SmartEarth Logo.png" />
+    <Resource Include="Resources\Image Sets\Default\Images\Zoom Icon + x16.png" />
+    <Resource Include="Resources\Image Sets\Default\Images\Zoom Icon + x32.png" />
+    <Resource Include="Resources\Image Sets\Default\Images\Zoom Icon +.png" />
+    <Resource Include="Resources\Image Sets\Default\Images\Zoom Icon - x16.png" />
+    <Resource Include="Resources\Image Sets\Default\Images\Zoom Icon - x32.png" />
+    <Resource Include="Resources\Image Sets\Default\Images\Zoom Icon -.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Image Sets\Default\Cursors\Closed Hand.cur" />
+    <Resource Include="Resources\Image Sets\Default\Cursors\Normal Hand.cur" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Image Sets\Default\Images\Round Cancel.png" />
+    <Resource Include="Resources\Image Sets\Default\Images\Round Check.png" />
+    <Resource Include="Resources\Image Sets\Default\Images\Round Hourglass.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Image Sets\Default\Images\Round Clock Warning.png" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

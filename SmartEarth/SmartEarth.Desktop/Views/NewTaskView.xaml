@@ -1,0 +1,204 @@
+﻿<UserControl x:Class="SmartEarth.Desktop.Views.NewTaskView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:prism="http://prismlibrary.com/" Name="ParentControl"
+             xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+             xmlns:material="http://materialdesigninxaml.net/winfx/xaml/themes"
+             xmlns:local="clr-namespace:SmartEarth.Desktop.Views"
+             mc:Ignorable="d" d:DesignHeight="800" d:DesignWidth="800"
+             prism:ViewModelLocator.AutoWireViewModel="True">
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/SmartEarth.Common.Infrastructure;component/Resources/Material.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </UserControl.Resources>
+    <Border Background="{DynamicResource CalenderAuxBrush}" Margin="20" CornerRadius="5" BorderThickness="1">
+        <Border.Effect>
+            <DropShadowEffect BlurRadius="5" ShadowDepth="1" Direction="270"/>
+        </Border.Effect>
+
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+
+            <Button Style="{DynamicResource ImageButton}" Grid.Column="1" Grid.Row="0" Margin="10" Command="{Binding CancelCommand}">
+                <Image Style="{DynamicResource ClearImage}" Source="{DynamicResource AddImage}" Width="50">
+                    <Image.RenderTransform>
+                        <TransformGroup>
+                            <RotateTransform Angle="45" CenterX="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType=Image}, Path=ActualWidth, Converter={StaticResource HalfConverter}}" CenterY="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType=Image}, Path=ActualHeight, Converter={StaticResource HalfConverter}}"/>
+                        </TransformGroup>
+                    </Image.RenderTransform>
+                </Image>
+            </Button>
+
+            <TextBlock Style="{StaticResource HeadingTextBlock}" Margin="50 20 20 20" Foreground="{StaticResource MainBrush}" Text="{Binding Task.Heading}" VerticalAlignment="Center"/>
+
+            <DockPanel Grid.Row="1" Grid.ColumnSpan="2">
+                <DockPanel LastChildFill="False" DockPanel.Dock="Bottom" Margin="20 20 50 20">
+                    <Button Margin="10" Content="{DynamicResource DONE}" Command="{Binding ScheduleCommand}" IsEnabled="{Binding Task.IsValid}" HorizontalAlignment="Right" DockPanel.Dock="Right"/>
+                    <!--
+                    <Button Margin="10" Content="{DynamicResource CANCEL}" Command="{Binding CancelCommand}" HorizontalAlignment="Right" DockPanel.Dock="Right"/>
+                    -->
+                </DockPanel>
+                <material:Clock DockPanel.Dock="Right" Margin="20 20 150 20" Time="{Binding StartTime, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Background="{DynamicResource Transparent}" Foreground="{DynamicResource MainBrush}" VerticalAlignment="Top" />
+                <ScrollViewer Margin="50 20 50 0" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto">
+                    <StackPanel DataContext="{Binding Task}">
+                        <TextBox HorizontalAlignment="Left" Width="200" material:HintAssist.Hint="{DynamicResource NAME}" Foreground="{DynamicResource MainBrush}" BorderBrush="{DynamicResource MainBrush}" 
+                     Style="{StaticResource MaterialDesignFloatingHintTextBox}" Text="{Binding Name, Mode=TwoWay, UpdateSourceTrigger=LostFocus, BindsDirectlyToSource=True}" />
+
+
+                        <StackPanel Orientation="Horizontal" Margin="0 10 0 7">
+                            <Label Padding="0 5" Margin="0 0 5 0" Content="{DynamicResource COLOR}" Foreground="{DynamicResource MainBrush}" Opacity=".7"/>
+                            <ComboBox material:ComboBoxAssist.ShowSelectedItem="True" Name="ColorCombo" Margin="0 -3 0 0" VerticalAlignment="Center" VerticalContentAlignment="Center" SelectedIndex="0" SelectedItem="{Binding Color, Mode=TwoWay, BindsDirectlyToSource=True, UpdateSourceTrigger=PropertyChanged}" ItemsSource="{Binding ElementName=ParentControl, Path=DataContext.Configuration.Colors}">
+                                <ComboBox.ItemTemplate>
+
+                                    <DataTemplate>
+                                        <Border Background="{Binding Brush}" ToolTip="{Binding Name}" BorderBrush="{DynamicResource PolarMainBrush}" BorderThickness="1" CornerRadius="5" Width="20" Height="20" />
+                                    </DataTemplate>
+                                </ComboBox.ItemTemplate>
+                                <ComboBox.ItemsPanel>
+                                    <ItemsPanelTemplate>
+                                        <WrapPanel MaxWidth="150"/>
+                                    </ItemsPanelTemplate>
+                                </ComboBox.ItemsPanel>
+                            </ComboBox>
+                        </StackPanel>
+
+                        <TextBox HorizontalAlignment="Left" Width="200" MaxWidth="400"  material:HintAssist.Hint="{DynamicResource DESCRIPTION}" TextWrapping="Wrap" AcceptsReturn="True" Foreground="{DynamicResource MainBrush}" BorderBrush="{DynamicResource MainBrush}" 
+                     Style="{StaticResource MaterialDesignFloatingHintTextBox}" Text="{Binding Description, Mode=TwoWay, UpdateSourceTrigger=LostFocus}" />
+                        <TextBox HorizontalAlignment="Left" Width="200" material:HintAssist.Hint="{DynamicResource LATITUDE}" Foreground="{DynamicResource MainBrush}" BorderBrush="{DynamicResource MainBrush}" 
+                     Style="{StaticResource MaterialDesignFloatingHintTextBox}" Text="{Binding Location.Latitude, Mode=TwoWay, UpdateSourceTrigger=LostFocus}" />
+                        <TextBox HorizontalAlignment="Left" Width="200" material:HintAssist.Hint="{DynamicResource LONGITUDE}" Foreground="{DynamicResource MainBrush}" BorderBrush="{DynamicResource MainBrush}" 
+                     Style="{StaticResource MaterialDesignFloatingHintTextBox}" Text="{Binding Location.Longitude, Mode=TwoWay, UpdateSourceTrigger=LostFocus}" />
+                        <TextBox HorizontalAlignment="Left" Width="100" material:HintAssist.Hint="{DynamicResource RANGE}" Foreground="{DynamicResource MainBrush}" BorderBrush="{DynamicResource MainBrush}" 
+                     Style="{StaticResource MaterialDesignFloatingHintTextBox}" Text="{Binding Location.Range, Mode=TwoWay, UpdateSourceTrigger=LostFocus}" />
+                        <TextBox HorizontalAlignment="Left" Width="100" material:HintAssist.Hint="{DynamicResource HEADING}" Foreground="{DynamicResource MainBrush}" BorderBrush="{DynamicResource MainBrush}" 
+                     Style="{StaticResource MaterialDesignFloatingHintTextBox}" Text="{Binding Location.Heading, Mode=TwoWay, UpdateSourceTrigger=LostFocus, Converter={StaticResource AngleToStringConverter}}" />
+                        <TextBox HorizontalAlignment="Left" Width="100" material:HintAssist.Hint="{DynamicResource TILT}" Foreground="{DynamicResource MainBrush}" BorderBrush="{DynamicResource MainBrush}" 
+                     Style="{StaticResource MaterialDesignFloatingHintTextBox}" Text="{Binding Location.Tilt, Mode=TwoWay, UpdateSourceTrigger=LostFocus, Converter={StaticResource AngleToStringConverter}}" />
+
+                        <Expander Foreground="{DynamicResource MainBrush}" Background="Transparent" Padding="5 0" Style="{DynamicResource SlideExpander}" Margin="0 20" Header="{DynamicResource REPEAT_TASK}" IsExpanded="{Binding Interval.IsEnabled, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
+                            <StackPanel>
+                                <StackPanel Margin="30 5 0 0" Orientation="Horizontal">
+                                    <TextBlock Margin="0 0 10 0" Text="{DynamicResource EVERY}" Foreground="{DynamicResource PolarMainBrush}"/>
+                                    <TextBox Margin="0 -5 10 0" TextAlignment="Center" Width="25" Foreground="{DynamicResource PolarMainBrush}" Text="{Binding Interval.Interval, Mode=TwoWay, UpdateSourceTrigger=LostFocus}" VerticalAlignment="Center"/>
+                                    <ComboBox Foreground="{DynamicResource PolarMainBrush}" material:ComboBoxAssist.ShowSelectedItem="True" material:ComboBoxAssist.ClassicMode="True" ItemsSource="{DynamicResource days_weeks_months_years}" SelectedIndex="{Binding ElementName=ParentControl, Path=DataContext.RepetitionIndex}"  MaxWidth="500" HorizontalAlignment="Left" Margin="0 -5 0 0">
+                                        <ComboBox.ItemTemplate>
+                                            <DataTemplate>
+                                                <TextBlock Text="{Binding}"/>
+                                            </DataTemplate>
+                                        </ComboBox.ItemTemplate>
+                                        <ComboBox.ItemsPanel>
+                                            <ItemsPanelTemplate>
+                                                <StackPanel/>
+                                            </ItemsPanelTemplate>
+                                        </ComboBox.ItemsPanel>
+                                    </ComboBox>
+                                    <TextBlock Foreground="{DynamicResource PolarMainBrush}">.</TextBlock>
+                                </StackPanel>
+
+                                <StackPanel Margin="30 10 0 0">
+                                    <ItemsControl ItemsSource="{Binding Interval.WeekDays, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}">
+                                        <ItemsControl.ItemTemplate>
+                                            <DataTemplate>
+                                                <CheckBox Content="{Binding}" Margin="0 0 4 0"/>
+                                            </DataTemplate>
+                                        </ItemsControl.ItemTemplate>
+                                        <ItemsControl.ItemsPanel>
+                                            <ItemsPanelTemplate>
+                                                <StackPanel Orientation="Horizontal"/>
+                                            </ItemsPanelTemplate>
+                                        </ItemsControl.ItemsPanel>
+                                    </ItemsControl>
+
+                                    <Expander Margin="0 10 0 0" IsExpanded="{Binding Interval.IsFinite, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Padding="5 0" Style="{DynamicResource SlideExpander}" Foreground="{DynamicResource MainBrush}" Background="Transparent" Header="{DynamicResource EXPIRE}">
+                                        <DockPanel Margin="30 0 0 0">
+                                            <ComboBox material:ComboBoxAssist.ShowSelectedItem="True" material:ComboBoxAssist.ClassicMode="True" Foreground="{DynamicResource PolarMainBrush}" SelectedIndex="{Binding ElementName=ParentControl, Path=DataContext.ExpirationIndex}" ItemsSource="{DynamicResource AFTER_ON_COLLECTION}" MaxWidth="500" />
+                                            <Grid>
+                                                <DatePicker Margin="10 -10 0 0" Width="100" Foreground="{DynamicResource PolarMainBrush}" SelectedDate="{Binding Interval.ExpirationDate, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" material:HintAssist.Hint="Pick Date" Style="{StaticResource MaterialDesignFloatingHintDatePicker}" HorizontalAlignment="Left" VerticalAlignment="Center" Visibility="{Binding Interval.ExpiresOnDate, BindsDirectlyToSource=True, Converter={StaticResource BoolToVisibilityConverter}}"/>
+                                                <StackPanel Orientation="Horizontal" Margin="10 0 0 0" HorizontalAlignment="Left" VerticalAlignment="Center" Visibility="{Binding Interval.ExpiresOnCount, Mode=OneWay, UpdateSourceTrigger=PropertyChanged, Converter={StaticResource BoolToVisibilityConverter}}">
+                                                    <TextBox Foreground="{DynamicResource PolarMainBrush}" Margin="3 0" Text="{Binding Interval.ExpirationCount, Mode=TwoWay, UpdateSourceTrigger=LostFocus}" TextAlignment="Center" Width="30" MaxWidth="100"/>
+                                                    <TextBlock Foreground="{DynamicResource PolarMainBrush}" Margin="0 4 0 0">
+                                                <Run Text="{DynamicResource runs}"/>.
+                                                    </TextBlock>
+                                                </StackPanel>
+                                            </Grid>
+                                        </DockPanel>
+                                    </Expander>
+                                    
+                                </StackPanel>
+                            </StackPanel>
+                        </Expander>
+                        
+                        <!--
+                        <Expander Padding="5 0" Style="{DynamicResource SlideExpander}" Foreground="{DynamicResource MainBrush}" Background="{DynamicResource Transparent}" Margin="0 20" Header="{DynamicResource REPEAT_TASK}" IsExpanded="{Binding Interval.IsEnabled, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
+                            <StackPanel DataContext="{Binding ElementName=ParentControl, Path=DataContext.Interval, BindsDirectlyToSource=True, UpdateSourceTrigger=PropertyChanged}">
+                                <ComboBox  material:ComboBoxAssist.ShowSelectedItem="True" material:ComboBoxAssist.ClassicMode="True" ItemsSource="{DynamicResource REPETITION_COLLECTION}" SelectedIndex="{Binding ElementName=ParentControl, Path=DataContext.RepetitionIndex}" MaxWidth="500" HorizontalAlignment="Left" Margin="30 0 0 0">
+                                    <ComboBox.ItemTemplate>
+                                        <DataTemplate>
+                                            <TextBlock Text="{Binding}"/>
+                                        </DataTemplate>
+                                    </ComboBox.ItemTemplate>
+                                    <ComboBox.ItemsPanel>
+                                        <ItemsPanelTemplate>
+                                            <StackPanel/>
+                                        </ItemsPanelTemplate>
+                                    </ComboBox.ItemsPanel>
+                                </ComboBox>
+
+                                <StackPanel Margin="60 5 0 0" Orientation="Horizontal" >
+                                    <TextBlock Margin="0 0 10 0" Text="{DynamicResource At}"/>
+                                    <TextBox Margin="0 -5 0 0" TextAlignment="Center" Width="25" Text="{Binding Interval, BindsDirectlyToSource=True, Mode=TwoWay, UpdateSourceTrigger=LostFocus}" VerticalAlignment="Center"/>
+                                    <TextBlock Margin="5 0 5 0" Text="{Binding RepetitionText, BindsDirectlyToSource=True, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}"/>
+                                    <TextBlock Text="interval."/>
+                                </StackPanel>
+
+                                <StackPanel Margin="60 10 0 0" Orientation="Horizontal">
+                                    <ItemsControl ItemsSource="{Binding WeekDays, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}">
+                                        <ItemsControl.ItemTemplate>
+                                            <DataTemplate>
+                                                <CheckBox Content="{Binding}" Margin="0 0 4 0"/>
+                                            </DataTemplate>
+                                        </ItemsControl.ItemTemplate>
+                                        <ItemsControl.ItemsPanel>
+                                            <ItemsPanelTemplate>
+                                                <StackPanel Orientation="Horizontal"/>
+                                            </ItemsPanelTemplate>
+                                        </ItemsControl.ItemsPanel>
+                                    </ItemsControl>
+                                </StackPanel>
+
+
+                                <Expander Margin="60 10 0 0" IsExpanded="{Binding IsFinite, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Padding="5 0" Style="{DynamicResource SlideExpander}" Foreground="{DynamicResource MainBrush}" Background="{DynamicResource Transparent}" Header="{DynamicResource EXPIRE}">
+                                    <DockPanel Margin="30 0 0 0">
+                                        <ComboBox material:ComboBoxAssist.ShowSelectedItem="True" material:ComboBoxAssist.ClassicMode="True" SelectedIndex="{Binding ElementName=ParentControl, Path=DataContext.ExpirationIndex, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" ItemsSource="{DynamicResource AFTER_ON_COLLECTION}" MaxWidth="500" />
+                                        <Grid>
+                                            <DatePicker Margin="10 -10 0 0" Width="100" Foreground="{DynamicResource PolarMainBrush}" SelectedDate="{Binding ExpirationDate, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" material:HintAssist.Hint="Pick Date" Style="{StaticResource MaterialDesignFloatingHintDatePicker}" HorizontalAlignment="Left" VerticalAlignment="Center" Visibility="{Binding ExpiresOnDate, BindsDirectlyToSource=True, Converter={StaticResource BoolToVisibilityConverter}}"/>
+                                            <StackPanel Orientation="Horizontal" Margin="10 0 0 0" HorizontalAlignment="Left" VerticalAlignment="Center" Visibility="{Binding ExpiresOnCount, Mode=OneWay, UpdateSourceTrigger=PropertyChanged, Converter={StaticResource BoolToVisibilityConverter}}">
+                                                <TextBox Margin="3 0" Text="{Binding ExpirationCount, BindsDirectlyToSource=True, Mode=TwoWay, UpdateSourceTrigger=LostFocus}" TextAlignment="Center" Width="30" MaxWidth="100"/>
+                                                <TextBlock Margin="0 4 0 0">
+                                                <Run Text="{DynamicResource runs}"/>.
+                                                </TextBlock>
+                                            </StackPanel>
+                                        </Grid>
+                                    </DockPanel>
+                                </Expander>
+                            </StackPanel>
+                        </Expander>
+                        -->
+                    </StackPanel>
+                </ScrollViewer>
+            </DockPanel>
+        </Grid>
+    </Border>
+</UserControl>

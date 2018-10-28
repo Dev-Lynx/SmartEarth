@@ -1,0 +1,103 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:SmartEarth.Common.Infrastructure.Resources.Skins.Sky"
+                     xmlns:sys="clr-namespace:System;assembly=mscorlib">
+    
+    <!--#region Brushes-->
+    <SolidColorBrush x:Key="PolarMainBrush" Color="#000000"/>
+    <SolidColorBrush x:Key="MainBrush" Color="#FFFFFF"/> 
+    <!-- Original Aux Brush : #03a9f4-->
+    <SolidColorBrush x:Key="AuxBrush" Color="#0085c1"/>
+    <SolidColorBrush x:Key="FaintAuxBrush" Color="#3dc2ff"/>
+    <SolidColorBrush x:Key="IntenseAuxBrush" Color="#00aeff"/>
+    
+    <SolidColorBrush x:Key="Transparent" Color="#00FFFFFF"/>
+
+    <SolidColorBrush x:Key="CalenderHeaderBrush" Color="#029be0"/>
+
+    <RadialGradientBrush x:Key="CalenderAuxBrush"
+		SpreadMethod="Pad" ColorInterpolationMode="SRgbLinearInterpolation" >
+        <GradientStop Color="#FF0085C1" Offset="0" />
+        <GradientStop Color="#FF0196D9" Offset="2" />
+    </RadialGradientBrush>
+
+    <RadialGradientBrush x:Key="ActiveCalenderBrush"
+		Center="0.5,0.52" GradientOrigin="0.5,0.5" RadiusX="0.5" RadiusY="0.5" 
+		SpreadMethod="Pad" ColorInterpolationMode="SRgbLinearInterpolation" >
+        <GradientStop Color="#FF38C1FF" Offset="0" />
+        <GradientStop Color="#FF00B0FF" Offset="2" />
+    </RadialGradientBrush>
+
+    <RadialGradientBrush x:Key="CurrentCalenderBrush"
+		Center="0.5,0.5" GradientOrigin="0.5,0.5" RadiusX="0.5" RadiusY="0.5" 
+		SpreadMethod="Pad" ColorInterpolationMode="SRgbLinearInterpolation" >
+        <GradientStop Color="#FF0070A3" Offset="0" />
+        <GradientStop Color="#FF017BB2" Offset="1" />
+    </RadialGradientBrush>
+
+    <LinearGradientBrush x:Key="MenuBackgroundBrush"
+		StartPoint="0.5,0" EndPoint="0.5,1" 
+		SpreadMethod="Pad" ColorInterpolationMode="SRgbLinearInterpolation" >
+        <GradientStop Color="#FFFFFFFF" Offset="0.5" />
+        <GradientStop Color="#FFEDEDED" Offset="0.85" />
+        <GradientStop Color="#FFEDEDED" Offset="0.15" />
+    </LinearGradientBrush>
+
+    <LinearGradientBrush x:Key="MenuMouseOverBackground"
+		StartPoint="0,0" EndPoint="0,1" 
+		SpreadMethod="Pad" ColorInterpolationMode="SRgbLinearInterpolation" >
+        <GradientStop Color="#FF9AE9FF" Offset="0.79" />
+        <GradientStop Color="#FFAAE8FF" Offset="1" />
+        <GradientStop Color="#FF6CE8FF" Offset="0.39" />
+        <GradientStop Color="#FFBAF0FE" Offset="0.39" />
+        <GradientStop Color="#FFD0F8FE" Offset="0.19" />
+        <GradientStop Color="#FFF7FDFF" Offset="0" />
+    </LinearGradientBrush>
+
+    <LinearGradientBrush x:Key="MenuPressedBackground"
+		StartPoint="0,0" EndPoint="0,1" 
+		SpreadMethod="Pad" ColorInterpolationMode="SRgbLinearInterpolation" >
+        <GradientStop Color="#FF85C8E3" Offset="0" />
+        <GradientStop Color="#FF8AD6F5" Offset="0.19" />
+        <GradientStop Color="#FF79D5F7" Offset="0.36" />
+        <GradientStop Color="#FF58D7F7" Offset="0.36" />
+        <GradientStop Color="#FF57CBF6" Offset="0.79" />
+        <GradientStop Color="#FF8EDFF3" Offset="1" />
+    </LinearGradientBrush>
+
+    <LinearGradientBrush x:Key="MenuCheckedBackground"
+		StartPoint="0,0" EndPoint="0,1" 
+		SpreadMethod="Pad" ColorInterpolationMode="SRgbLinearInterpolation" >
+        <GradientStop Color="#FFA1EAFF" Offset="0" />
+        <GradientStop Color="#FF92DBFF" Offset="0.18" />
+        <GradientStop Color="#FF5FD1FF" Offset="0.39" />
+        <GradientStop Color="#FF79D8FF" Offset="1" />
+    </LinearGradientBrush>
+
+    <LinearGradientBrush x:Key="BackgroundBrush"
+		StartPoint="0.5,0" EndPoint="0.5,1" 
+		SpreadMethod="Pad" ColorInterpolationMode="SRgbLinearInterpolation" >
+        <GradientStop Color="#FFFFFFFF" Offset="0.5" />
+        <GradientStop Color="#FFF8F8F8" Offset="1" />
+        <GradientStop Color="#FFF8F8F8" Offset="0" />
+    </LinearGradientBrush>
+
+    <!--
+    <RadialGradientBrush x:Key="CalenderAuxBrush" 
+		SpreadMethod="Pad" ColorInterpolationMode="SRgbLinearInterpolation" >
+        <GradientStop Color="#FF80D0F5" Offset="0" />
+        <GradientStop Color="#FF0085C1" Offset="0.5" />
+    </RadialGradientBrush>
+    -->
+    
+    <!--#endregion-->
+    
+    <!--#region Default Font Settings-->
+    <FontFamily x:Key="NormalFont">Calibiri</FontFamily>
+    <sys:Double x:Key="NormalFontSize">16</sys:Double>
+
+    <FontFamily x:Key="HeadingFont">Calibri</FontFamily>
+    <sys:Double x:Key="HeadingFontSize">30</sys:Double>
+    <!--#endregion-->
+    
+</ResourceDictionary>

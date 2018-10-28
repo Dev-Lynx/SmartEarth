@@ -1,0 +1,22 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:SmartEarth.Common.Infrastructure.Resources"
+                    xmlns:converters="clr-namespace:SmartEarth.Common.Infrastructure.Resources.Converters">
+    
+    <!--#region Converters-->
+    <BooleanToVisibilityConverter x:Key="BoolToVisibilityConverter"/>
+    <converters:AngleToStringConverter x:Key="AngleToStringConverter"/>
+    <converters:HalfConverter x:Key="HalfConverter"/>
+    <converters:InvisibleWhenZeroConverter x:Key="InvisibleWhenZeroConverter"/>
+    <converters:VisibleWhenZeroConverter x:Key="VisibleWhenZeroConverter"/>
+    <converters:MultiplyConverter x:Key="MultiplyConverter"/>
+    <converters:InverseBoolToVisibilityConverter x:Key="InverseBoolToVisibilityConverter"/>
+    <converters:PercentageToRatioConverter x:Key="PercentageToRatioConverter"/>
+    <converters:BooleanAndConverter x:Key="BooleanAndConverter"/>
+    <converters:BooleanAndToVisibilityConverter x:Key="BooleanAndToVisibilityConverter"/>
+    <converters:LengthToThicknessConverter x:Key="LengthToThicknessConverter"/>
+    <converters:CaseConverter x:Key="CaseConverter"/>
+    <converters:MathConverter x:Key="MathConverter"/>
+    <converters:InverseBoolConverter x:Key="InverseBoolConverter"/>
+    <!--#endregion-->
+</ResourceDictionary>

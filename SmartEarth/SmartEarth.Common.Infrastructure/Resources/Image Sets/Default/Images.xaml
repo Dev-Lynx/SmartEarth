@@ -1,0 +1,63 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:SmartEarth.Common.Infrastructure.Resources.Image_Sets.Default">
+    <!--#region Menu Icons-->
+    <BitmapImage x:Key="RibbonMenuIcon" UriSource="Images/Document_16x16.png"/>
+    <BitmapImage x:Key="PlayIcon16" UriSource="Images/Play Icon x16.png"/>
+    <BitmapImage x:Key="PlayIcon32" UriSource="Images/Play Icon x32.png"/>
+    <BitmapImage x:Key="StopIcon16" UriSource="Images/Stop Icon x16.png"/>
+    <BitmapImage x:Key="StopIcon32" UriSource="Images/Stop Icon x32.png"/>
+    <BitmapImage x:Key="GlobeIcon32" UriSource="Images/Earth Globe x32.png"/>
+    <BitmapImage x:Key="ScheduleIcon32" UriSource="Images/Schedule Icon x32.png"/>
+    <BitmapImage x:Key="ScheduleIcon16" UriSource="Images/Schedule Icon x16.png"/>
+    <BitmapImage x:Key="ScheduleCheckIcon16" UriSource="Images/Schedule Check Icon x16.png"/>
+    <BitmapImage x:Key="ScheduleCheckIcon32" UriSource="Images/Schedule Check Icon x32.png"/>
+    <BitmapImage x:Key="SchedulePendingIcon16" UriSource="Images/Schedule Pending Icon x16.png"/>
+    <BitmapImage x:Key="SchedulePendingIcon32" UriSource="Images/Schedule Pending Icon x32.png"/>
+    <BitmapImage x:Key="CheckIcon16" UriSource="Images/Check Icon x16.png"/>
+    <BitmapImage x:Key="CheckIcon32" UriSource="Images/Check Icon x32.png"/>
+    <BitmapImage x:Key="CloseIcon16" UriSource="Images/Close Icon x16.png"/>
+    <BitmapImage x:Key="CloseIcon32" UriSource="Images/Close Icon x32.png"/>
+    <BitmapImage x:Key="NewTaskIcon16" UriSource="Images/New Task Icon x16.png"/>
+    <BitmapImage x:Key="NewTaskIcon32" UriSource="Images/New Task Icon x32.png"/>
+    <BitmapImage x:Key="OpenInIcon16" UriSource="Images/Open In Icon x16.png"/>
+    <BitmapImage x:Key="OpenInIcon32" UriSource="Images/Open In Icon x32.png"/>
+    <BitmapImage x:Key="InformationIcon16" UriSource="Images/Information Icon x16.png"/>
+    <BitmapImage x:Key="InformationIcon32" UriSource="Images/Information Icon x32.png"/>
+    <BitmapImage x:Key="ResizeIcon16" UriSource="Images/Resize Icon x16.png"/>
+    <BitmapImage x:Key="ResizeIcon32" UriSource="Images/Resize Icon x32.png"/>
+    <BitmapImage x:Key="RotateLeftIcon16" UriSource="Images/Rotate Left Icon x16.png"/>
+    <BitmapImage x:Key="RotateLeftIcon32" UriSource="Images/Rotate Left Icon x32.png"/>
+    <BitmapImage x:Key="RotateRightIcon16" UriSource="Images/Rotate Right Icon x16.png"/>
+    <BitmapImage x:Key="RotateRightIcon32" UriSource="Images/Rotate Right Icon x32.png"/>
+    <BitmapImage x:Key="ZoomPlusIcon16" UriSource="Images/Zoom Icon + x16.png"/>
+    <BitmapImage x:Key="ZoomPlusIcon32" UriSource="Images/Zoom Icon + x32.png"/>
+    <BitmapImage x:Key="ZoomMinusIcon16" UriSource="Images/Zoom Icon - x16.png"/>
+    <BitmapImage x:Key="ZoomMinusIcon32" UriSource="Images/Zoom Icon - x32.png"/>
+    <!--#endregion-->
+    
+   
+    <BitmapImage x:Key="LeftArrow" UriSource="Images/Left Arrow.png"/>
+    <BitmapImage x:Key="RightArrow" UriSource="Images/Right Arrow.png"/>
+    <BitmapImage x:Key="AddImage" UriSource="Images/Add Icon.png"/>
+    <BitmapImage x:Key="ColorWheel" UriSource="Images/Color Wheel.jpg"/>
+    <BitmapImage x:Key="BackgroundGlobe" UriSource="Images/White Earth Globe.png"/>
+    <BitmapImage x:Key="BackIcon" UriSource="Images/Back Icon.png"/>
+    <BitmapImage x:Key="ForwardIcon" UriSource="Images/Forward Icon.png"/>
+    <BitmapImage x:Key="GlobeIcon" UriSource="Images/Earth Globe.png"/>
+    <BitmapImage x:Key="SmartEarthLogo" UriSource="Images/SmartEarth Logo.png"/>
+    <BitmapImage x:Key="CloseIcon" UriSource="Images/Close Icon.png"/>
+    <BitmapImage x:Key="MinimizeIcon" UriSource="Images/Minimize Icon.png"/>
+    <BitmapImage x:Key="MaximizeIcon" UriSource="Images/Maximize Icon.png"/>
+    <BitmapImage x:Key="RestoreIcon" UriSource="Images/Restore Icon.png"/>
+
+    <BitmapImage x:Key="RoundPending" UriSource="Images/Round Hourglass.png"/>
+    <BitmapImage x:Key="RoundCheck" UriSource="Images/Round Check.png"/>
+    <BitmapImage x:Key="RoundFail" UriSource="Images/Round Cancel.png"/>
+    <BitmapImage x:Key="RoundClockAlert" UriSource="Images/Round Clock Warning.png"/>
+
+    <!--#region Cursors-->
+    <TextBlock x:Key="HandCursor" Cursor="Cursors/Normal Hand.cur"/>
+    <TextBlock x:Key="ClosedHandCursor" Cursor="Cursors/Closed Hand.cur"/>
+    <!--#endregion-->
+</ResourceDictionary>

@@ -1,0 +1,32 @@
+﻿<UserControl x:Class="SmartEarth.Desktop.Views.HomeView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:SmartEarth.Desktop.Views"
+             xmlns:prism="http://prismlibrary.com/" Name="ParentControl"
+             xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity" 
+             xmlns:core="clr-namespace:SmartEarth.Common.Infrastructure;assembly=SmartEarth.Common.Infrastructure"
+             mc:Ignorable="d" prism:ViewModelLocator.AutoWireViewModel="True"
+             d:DesignHeight="450" d:DesignWidth="800" Background="{DynamicResource BackgroundBrush}">
+    <Grid>
+
+        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Orientation="Horizontal">
+            <!--
+            <Image Style="{DynamicResource ClearImage}" Opacity="1" Width="150" RenderOptions.EdgeMode="Aliased" Margin="10 10 20 10" Source="{DynamicResource BackgroundGlobe}"/>
+            -->
+            <Border>
+                <Border.Effect>
+                    <DropShadowEffect Color="#7feeeeee" BlurRadius="2" Direction="90" ShadowDepth=".5"/>
+                </Border.Effect>
+                <Border>
+                    <Border.Effect>
+                        <DropShadowEffect Color="#7f333333" BlurRadius="2" Direction="270" ShadowDepth="0.3" Opacity=".6"/>
+                    </Border.Effect>
+                    <TextBlock Text="SmartEarth" TextWrapping="Wrap" Opacity="1" VerticalAlignment="Center" FontSize="80" FontWeight="Bold" Foreground="#ffffff"/>
+                </Border>
+            </Border>
+        </StackPanel>
+        <ContentControl prism:RegionManager.RegionName="{x:Static core:Core.HOME_REGION}" />
+    </Grid>
+</UserControl>
